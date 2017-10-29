@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Entity;
 
+use MsgPhp\Domain\Entity\CreatedAtFieldTrait;
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\AttributeValueIdInterface;
 
@@ -12,6 +13,8 @@ use MsgPhp\Eav\AttributeValueIdInterface;
  */
 class AttributeValue
 {
+    use CreatedAtFieldTrait;
+
     private $id;
     private $attribute;
     private $isNull;
@@ -29,6 +32,7 @@ class AttributeValue
     {
         $this->id = $id;
         $this->attribute = $attribute;
+        $this->createdAt = new \DateTimeImmutable();
 
         $this->changeValue($value);
     }

@@ -12,6 +12,7 @@
         <field name="floatValue" type="float" nullable="true" />
         <field name="stringValue" type="text" nullable="true" />
         <field name="dateTimeValue" type="datetime" nullable="true" />
+        <field name="createdAt" type="datetime" />
 
         <many-to-one field="attribute" target-entity="MsgPhp\Eav\Entity\Attribute">
             <cascade><cascade-persist/></cascade>
