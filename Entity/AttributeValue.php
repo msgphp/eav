@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Entity;
 
-use MsgPhp\Domain\Entity\CreatedAtFieldTrait;
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\AttributeValueIdInterface;
 
@@ -13,17 +12,15 @@ use MsgPhp\Eav\AttributeValueIdInterface;
  */
 class AttributeValue
 {
-    use CreatedAtFieldTrait;
-
     private $id;
     private $attribute;
-    private $isNull;
     private $boolValue;
     private $intValue;
     private $floatValue;
     private $stringValue;
     private $dateTimeValue;
     private $value;
+    private $isNull;
 
     /**
      * @internal
@@ -32,7 +29,6 @@ class AttributeValue
     {
         $this->id = $id;
         $this->attribute = $attribute;
-        $this->createdAt = new \DateTimeImmutable();
 
         $this->changeValue($value);
     }
@@ -52,20 +48,17 @@ class AttributeValue
         return $this->attribute->getId();
     }
 
-    public function isNull(): bool
-    {
-        return $this->isNull;
-    }
-
     public function getValue()
     {
-        if ($this->isNull) {
-            return null;
-        } elseif (null !== $this->value) {
+        if ($this->isNull || null !== $this->value) {
             return $this->value;
-        } else {
-            return $this->value = $this->doGetValue();
         }
+
+        if (null === $value = $this->doGetValue()) {
+            $this->isNull = true;
+        }
+
+        return $this->value = $value;
     }
 
     /**
@@ -73,19 +66,19 @@ class AttributeValue
      */
     public function changeValue($value): void
     {
-        $this->isNull = false;
+        $this->isNull = true;
         $this->boolValue = $this->intValue = $this->floatValue = $this->stringValue = $this->value = null;
 
-        $this->doSetValue($value);
+        if (null !== $value) {
+            $this->doSetValue($value);
 
-        $this->value = $value;
+            $this->value = $value;
+        }
     }
 
     protected function doSetValue($value): void
     {
-        if (null === $value) {
-            $this->isNull = true;
-        } elseif (is_bool($value)) {
+        if (is_bool($value)) {
             $this->boolValue = $value;
         } elseif (is_int($value)) {
             $this->intValue = $value;

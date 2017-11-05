@@ -6,16 +6,13 @@
     <mapped-superclass name="MsgPhp\Eav\Entity\AttributeValue">
         <id name="id" type="msgphp_attribute_value_id" />
 
-        <field name="isNull" type="boolean" />
         <field name="boolValue" type="boolean" nullable="true" />
         <field name="intValue" type="integer" nullable="true" />
         <field name="floatValue" type="float" nullable="true" />
         <field name="stringValue" type="text" nullable="true" />
         <field name="dateTimeValue" type="datetime" nullable="true" />
-        <field name="createdAt" type="datetime" />
 
         <many-to-one field="attribute" target-entity="MsgPhp\Eav\Entity\Attribute">
-            <cascade><cascade-persist/></cascade>
             <join-column nullable="false" on-delete="CASCADE" />
         </many-to-one>
     </mapped-superclass>
