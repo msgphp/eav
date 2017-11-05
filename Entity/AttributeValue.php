@@ -19,6 +19,7 @@ class AttributeValue
     private $floatValue;
     private $stringValue;
     private $dateTimeValue;
+    private $checksum;
     private $value;
     private $isNull;
 
@@ -61,6 +62,11 @@ class AttributeValue
         return $this->value = $value;
     }
 
+    public function getChecksum(): string
+    {
+        return $this->checksum;
+    }
+
     /**
      * @internal
      */
@@ -68,6 +74,7 @@ class AttributeValue
     {
         $this->isNull = true;
         $this->boolValue = $this->intValue = $this->floatValue = $this->stringValue = $this->value = null;
+        $this->checksum = md5(serialize($value));
 
         if (null !== $value) {
             $this->doSetValue($value);
