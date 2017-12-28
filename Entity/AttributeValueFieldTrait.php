@@ -32,4 +32,9 @@ trait AttributeValueFieldTrait
     {
         return $this->getAttributeValue()->getAttributeId();
     }
+
+    public function getValue()
+    {
+        return $this->getAttributeValue()->getValue();
+    }
 }
