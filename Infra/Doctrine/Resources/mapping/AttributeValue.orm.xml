@@ -11,7 +11,7 @@
         <field name="floatValue" type="float" nullable="true" />
         <field name="stringValue" type="text" nullable="true" />
         <field name="dateTimeValue" type="datetime" nullable="true" />
-        <field name="checksum" type="string" />
+        <field name="checksum" />
 
         <many-to-one field="attribute" target-entity="MsgPhp\Eav\Entity\Attribute">
             <join-column nullable="false" on-delete="CASCADE" />
