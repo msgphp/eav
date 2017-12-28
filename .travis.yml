@@ -10,4 +10,4 @@ install:
   - composer update --no-progress --no-suggest --prefer-dist
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/simple-phpunit
