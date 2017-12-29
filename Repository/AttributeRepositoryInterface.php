@@ -22,13 +22,7 @@ interface AttributeRepositoryInterface
 
     public function exists(AttributeIdInterface $id): bool;
 
-    /**
-     * @internal
-     */
     public function save(Attribute $attribute): void;
 
-    /**
-     * @internal
-     */
     public function delete(Attribute $attribute): void;
 }

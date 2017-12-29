@@ -37,17 +37,11 @@ final class AttributeRepository implements AttributeRepositoryInterface
         return $this->doExists($id);
     }
 
-    /**
-     * @internal
-     */
     public function save(Attribute $attribute): void
     {
         $this->doSave($attribute);
     }
 
-    /**
-     * @internal
-     */
     public function delete(Attribute $attribute): void
     {
         $this->doDelete($attribute);

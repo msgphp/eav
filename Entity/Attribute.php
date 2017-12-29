@@ -13,9 +13,6 @@ class Attribute
 {
     private $id;
 
-    /**
-     * @internal
-     */
     public function __construct(AttributeIdInterface $id)
     {
         $this->id = $id;

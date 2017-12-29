@@ -23,9 +23,6 @@ class AttributeValue
     private $value;
     private $isNull;
 
-    /**
-     * @internal
-     */
     public function __construct(AttributeValueIdInterface $id, Attribute $attribute, $value)
     {
         $this->id = $id;
@@ -67,9 +64,6 @@ class AttributeValue
         return $this->checksum;
     }
 
-    /**
-     * @internal
-     */
     public function changeValue($value): void
     {
         $this->isNull = true;
