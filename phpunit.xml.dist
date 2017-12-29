@@ -26,6 +26,7 @@
             <exclude>
                 <directory>./Command/*Command.php</directory>
                 <directory>./Event/*Event.php</directory>
+                <directory>./Infra/Doctrine/Type/*Type.php</directory>
                 <directory>./Tests</directory>
                 <directory>./vendor</directory>
             </exclude>
