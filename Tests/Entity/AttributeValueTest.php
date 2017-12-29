@@ -55,4 +55,37 @@ final class AttributeValueTest extends TestCase
         yield [new \DateTime(), new \DateTimeImmutable()];
         yield [new \DateTimeImmutable(), null];
     }
+
+    /**
+     * @dataProvider provideLazyAttributeValues
+     */
+    public function testLazyGetValue($value, string $type): void
+    {
+        $attributeValue = (new \ReflectionClass(AttributeValue::class))->newInstanceWithoutConstructor();
+        $this->assertNull($attributeValue->getValue());
+
+        $propertyValueRefl = new \ReflectionProperty(AttributeValue::class, $type.'Value');
+        $propertyValueRefl->setAccessible(true);
+        $propertyValueRefl->setValue($attributeValue, $value);
+
+        $propertyValueRefl = new \ReflectionProperty(AttributeValue::class, 'isNull');
+        $propertyValueRefl->setAccessible(true);
+        $propertyValueRefl->setValue($attributeValue, false);
+
+        $this->assertSame($value, $attributeValue->getValue());
+    }
+
+    public function provideLazyAttributeValues(): iterable
+    {
+        yield [true, 'bool'];
+        yield [false, 'bool'];
+        yield [0, 'int'];
+        yield [-1, 'int'];
+        yield [.0, 'float'];
+        yield [-1.5, 'float'];
+        yield ['', 'string'];
+        yield ['value', 'string'];
+        yield [new \DateTime(), 'dateTime'];
+        yield [new \DateTimeImmutable(), 'dateTime'];
+    }
 }
