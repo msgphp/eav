@@ -11,6 +11,7 @@ use MsgPhp\Eav\{AttributeIdInterface, AttributeValueIdInterface};
  */
 trait AttributeValueFieldTrait
 {
+    /** @var AttributeValue */
     private $attributeValue;
 
     public function getAttributeValue(): AttributeValue
@@ -20,21 +21,21 @@ trait AttributeValueFieldTrait
 
     public function getAttributeValueId(): AttributeValueIdInterface
     {
-        return $this->getAttributeValue()->getId();
+        return $this->attributeValue->getId();
     }
 
     public function getAttribute(): Attribute
     {
-        return $this->getAttributeValue()->getAttribute();
+        return $this->attributeValue->getAttribute();
     }
 
     public function getAttributeId(): AttributeIdInterface
     {
-        return $this->getAttributeValue()->getAttributeId();
+        return $this->attributeValue->getAttributeId();
     }
 
     public function getValue()
     {
-        return $this->getAttributeValue()->getValue();
+        return $this->attributeValue->getValue();
     }
 }

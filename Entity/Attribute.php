@@ -18,7 +18,7 @@ class Attribute
         $this->id = $id;
     }
 
-    final public function getId(): AttributeIdInterface
+    public function getId(): AttributeIdInterface
     {
         return $this->id;
     }

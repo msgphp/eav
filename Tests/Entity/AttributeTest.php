@@ -12,8 +12,8 @@ final class AttributeTest extends TestCase
 {
     public function testCreate(): void
     {
-        $attribute = new Attribute($this->getMockBuilder(AttributeIdInterface::class)->getMock());
+        $attribute = new Attribute($id = $this->getMockBuilder(AttributeIdInterface::class)->getMock());
 
-        $this->assertInstanceOf(AttributeIdInterface::class, $attribute->getId());
+        $this->assertSame($id, $attribute->getId());
     }
 }
