@@ -2,9 +2,12 @@
 
 A domain layer providing a low-level entity-attribute-value model.
 
-[![Build Status](https://travis-ci.org/msgphp/eav.svg?branch=master)](https://travis-ci.org/msgphp/eav)
+## Installation
+
+```bash
+composer require msgphp/eav
+```
 
 ## Features
 
-- Event / command driven
-- Doctrine persistence infrastructure
+- Doctrine and in-memory persistence infrastructure
