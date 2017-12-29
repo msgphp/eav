@@ -35,7 +35,7 @@ final class AttributeValueFieldTraitTest extends TestCase
 
     private function getObject($value)
     {
-        return new class ($value) {
+        return new class($value) {
             use AttributeValueFieldTrait;
 
             public function __construct($value)

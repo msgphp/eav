@@ -62,6 +62,7 @@ final class AttributeValueTest extends TestCase
     public function testLazyGetValue($value, string $type): void
     {
         $attributeValue = (new \ReflectionClass(AttributeValue::class))->newInstanceWithoutConstructor();
+
         $this->assertNull($attributeValue->getValue());
 
         $propertyValueRefl = new \ReflectionProperty(AttributeValue::class, $type.'Value');
