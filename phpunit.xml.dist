@@ -24,6 +24,8 @@
         <whitelist>
             <directory>./</directory>
             <exclude>
+                <directory>./Command/*Command.php</directory>
+                <directory>./Event/*Event.php</directory>
                 <directory>./Tests</directory>
                 <directory>./vendor</directory>
             </exclude>
