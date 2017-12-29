@@ -66,7 +66,7 @@ class AttributeValue
     public function changeValue($value): void
     {
         $this->isNull = true;
-        $this->boolValue = $this->intValue = $this->floatValue = $this->stringValue = $this->value = null;
+        $this->boolValue = $this->intValue = $this->floatValue = $this->stringValue = $this->dateTimeValue = $this->value = null;
         $this->checksum = md5(serialize($value));
 
         if (null !== $value) {
