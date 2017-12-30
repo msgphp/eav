@@ -2,7 +2,8 @@
     "name": "msgphp/eav",
     "type": "library",
     "license": "MIT",
-    "description": "MsgPhp Entity-Attribute-Value domain layer",
+    "description": "Entity-Attribute-Value domain layer",
+    "keywords": ["entity-attribute-value", "eav"],
     "authors": [
         {
             "name": "Roland Franssen",

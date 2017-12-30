@@ -1,6 +1,6 @@
-# MsgPhp EAV Domain
+# Entity-Attribute-Value Domain
 
-A domain layer providing a low-level entity-attribute-value model.
+A domain layer providing basic EAV management.
 
 ## Installation
 
@@ -11,3 +11,7 @@ composer require msgphp/eav
 ## Features
 
 - Doctrine and in-memory persistence infrastructure
+
+## Contributing
+
+This repository is **READ ONLY**. Issues and pull requests should be submitted in the [main development repository](https://github.com/msgphp/msgphp).
