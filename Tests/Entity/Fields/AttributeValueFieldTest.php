@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Tests\Entity;
+namespace MsgPhp\Eav\Tests\Entity\Fields;
 
-use MsgPhp\Eav\Entity\{Attribute, AttributeValue, AttributeValueFieldTrait};
 use MsgPhp\Eav\{AttributeIdInterface, AttributeValueIdInterface};
+use MsgPhp\Eav\Entity\{Attribute, AttributeValue};
+use MsgPhp\Eav\Entity\Fields\AttributeValueField;
 use PHPUnit\Framework\TestCase;
 
-final class AttributeValueFieldTraitTest extends TestCase
+final class AttributeValueFieldTest extends TestCase
 {
     public function testField(): void
     {
@@ -30,13 +31,14 @@ final class AttributeValueFieldTraitTest extends TestCase
         $this->assertSame($value, $object->getAttributeValue());
         $this->assertSame($value->getId(), $object->getAttributeValueId());
         $this->assertSame($value->getAttribute(), $object->getAttribute());
+        $this->assertSame($value->getAttributeId(), $object->getAttributeId());
         $this->assertSame($value->getValue(), $object->getValue());
     }
 
     private function getObject($value)
     {
         return new class($value) {
-            use AttributeValueFieldTrait;
+            use AttributeValueField;
 
             public function __construct($value)
             {

@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Entity;
+namespace MsgPhp\Eav\Entity\Fields;
 
 use MsgPhp\Eav\{AttributeIdInterface, AttributeValueIdInterface};
+use MsgPhp\Eav\Entity\{Attribute, AttributeValue};
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-trait AttributeValueFieldTrait
+trait AttributeValueField
 {
     /** @var AttributeValue */
     private $attributeValue;
