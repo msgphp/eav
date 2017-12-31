@@ -12,11 +12,11 @@ final class AttributeValueTest extends TestCase
 {
     public function testCreate(): void
     {
-        $attribute = $this->getMockBuilder(Attribute::class)->disableOriginalConstructor()->getMock();
+        $attribute = $this->createMock(Attribute::class);
         $attribute->expects($this->any())
             ->method('getId')
-            ->willReturn($this->getMockBuilder(AttributeIdInterface::class)->getMock());
-        $attributeValue = new AttributeValue($id = $this->getMockBuilder(AttributeValueIdInterface::class)->getMock(), $attribute, 'value');
+            ->willReturn($this->createMock(AttributeIdInterface::class));
+        $attributeValue = new AttributeValue($id = $this->createMock(AttributeValueIdInterface::class), $attribute, 'value');
 
         $this->assertSame($id, $attributeValue->getId());
         $this->assertSame($attribute, $attributeValue->getAttribute());
@@ -30,7 +30,7 @@ final class AttributeValueTest extends TestCase
      */
     public function testChangeValue($initialValue, $newValue): void
     {
-        $attributeValue = new AttributeValue($this->getMockBuilder(AttributeValueIdInterface::class)->getMock(), $this->getMockBuilder(Attribute::class)->disableOriginalConstructor()->getMock(), $initialValue);
+        $attributeValue = new AttributeValue($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), $initialValue);
         $checksum = $attributeValue->getChecksum();
 
         $this->assertSame($initialValue, $attributeValue->getValue());

@@ -12,7 +12,7 @@ final class AttributeTest extends TestCase
 {
     public function testCreate(): void
     {
-        $attribute = new Attribute($id = $this->getMockBuilder(AttributeIdInterface::class)->getMock());
+        $attribute = new Attribute($id = $this->createMock(AttributeIdInterface::class));
 
         $this->assertSame($id, $attribute->getId());
     }

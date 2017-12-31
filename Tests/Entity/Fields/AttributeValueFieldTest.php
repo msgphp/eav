@@ -13,16 +13,16 @@ final class AttributeValueFieldTest extends TestCase
 {
     public function testField(): void
     {
-        $value = $this->getMockBuilder(AttributeValue::class)->disableOriginalConstructor()->getMock();
+        $value = $this->createMock(AttributeValue::class);
         $value->expects($this->any())
             ->method('getId')
-            ->willReturn($this->getMockBuilder(AttributeValueIdInterface::class)->getMock());
+            ->willReturn($this->createMock(AttributeValueIdInterface::class));
         $value->expects($this->any())
             ->method('getAttribute')
-            ->willReturn($this->getMockBuilder(Attribute::class)->disableOriginalConstructor()->getMock());
+            ->willReturn($this->createMock(Attribute::class));
         $value->expects($this->any())
             ->method('getAttributeId')
-            ->willReturn($this->getMockBuilder(AttributeIdInterface::class)->getMock());
+            ->willReturn($this->createMock(AttributeIdInterface::class));
         $value->expects($this->any())
             ->method('getValue')
             ->willReturn('value');
