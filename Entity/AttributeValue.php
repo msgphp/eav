@@ -67,13 +67,14 @@ class AttributeValue
     {
         $this->isNull = true;
         $this->boolValue = $this->intValue = $this->floatValue = $this->stringValue = $this->dateTimeValue = $this->value = null;
-        $this->checksum = md5(serialize($value));
 
         if (null !== $value) {
             $this->doSetValue($value);
 
             $this->value = $value;
         }
+
+        $this->checksum = md5(serialize($value));
     }
 
     protected function doSetValue($value): void

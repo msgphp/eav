@@ -89,4 +89,32 @@ final class AttributeValueTest extends TestCase
         yield [new \DateTime(), 'dateTime'];
         yield [new \DateTimeImmutable(), 'dateTime'];
     }
+
+    /**
+     * @dataProvider provideUnknownTypeValues
+     */
+    public function testUnknownTypes($value, bool $initial): void
+    {
+        if ($initial) {
+            $this->expectException(\LogicException::class);
+
+            new AttributeValue($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), $value);
+        } else {
+            $attributeValue = new AttributeValue($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), null);
+
+            $this->expectException(\LogicException::class);
+
+            $attributeValue->changeValue($value);
+        }
+    }
+
+    public function provideUnknownTypeValues(): iterable
+    {
+        yield [[], true];
+        yield [[123], false];
+        yield [new \stdClass(), true];
+        yield [new \stdClass(), false];
+        yield [function (): void {}, true];
+        yield [function (): string {}, false];
+    }
 }
