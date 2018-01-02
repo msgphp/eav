@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Infra\InMemory\Repository;
 
-use MsgPhp\Domain\Entity\EntityCollectionInterface;
+use MsgPhp\Domain\DomainCollectionInterface;
 use MsgPhp\Domain\Infra\InMemory\DomainEntityRepositoryTrait;
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\Entity\Attribute;
@@ -20,9 +20,9 @@ final class AttributeRepository implements AttributeRepositoryInterface
     private $idFields = ['id'];
 
     /**
-     * @return EntityCollectionInterface|Attribute[]
+     * @return DomainCollectionInterface|Attribute[]
      */
-    public function findAll(int $offset = null, int $limit = null): EntityCollectionInterface
+    public function findAll(int $offset = null, int $limit = null): DomainCollectionInterface
     {
         return $this->createResultSet($offset, $limit);
     }
