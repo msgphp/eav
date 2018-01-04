@@ -20,22 +20,22 @@ trait AttributeValueField
         return $this->attributeValue;
     }
 
-    public function getAttributeValueId(): AttributeValueIdInterface
+    final public function getAttributeValueId(): AttributeValueIdInterface
     {
         return $this->attributeValue->getId();
     }
 
-    public function getAttribute(): Attribute
+    final public function getAttribute(): Attribute
     {
         return $this->attributeValue->getAttribute();
     }
 
-    public function getAttributeId(): AttributeIdInterface
+    final public function getAttributeId(): AttributeIdInterface
     {
         return $this->attributeValue->getAttributeId();
     }
 
-    public function getValue()
+    final public function getValue()
     {
         return $this->attributeValue->getValue();
     }
