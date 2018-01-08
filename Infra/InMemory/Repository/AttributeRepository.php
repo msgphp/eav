@@ -22,9 +22,9 @@ final class AttributeRepository implements AttributeRepositoryInterface
     /**
      * @return DomainCollectionInterface|Attribute[]
      */
-    public function findAll(int $offset = null, int $limit = null): DomainCollectionInterface
+    public function findAll(int $offset = 0, int $limit = 0): DomainCollectionInterface
     {
-        return $this->createResultSet($offset, $limit);
+        return $this->doFindAll($offset, $limit);
     }
 
     public function find(AttributeIdInterface $id): Attribute

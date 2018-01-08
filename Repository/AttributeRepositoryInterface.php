@@ -16,7 +16,7 @@ interface AttributeRepositoryInterface
     /**
      * @return DomainCollectionInterface|Attribute[]
      */
-    public function findAll(int $offset = null, int $limit = null): DomainCollectionInterface;
+    public function findAll(int $offset = 0, int $limit = 0): DomainCollectionInterface;
 
     public function find(AttributeIdInterface $id): Attribute;
 
