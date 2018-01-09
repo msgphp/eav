@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Infra\Doctrine\Type;
 
+use MsgPhp\Domain\DomainIdInterface;
 use MsgPhp\Domain\Infra\Doctrine\DomainUuidType;
-use MsgPhp\Domain\Infra\Uuid\DomainId;
 use MsgPhp\Eav\Infra\Uuid\AttributeId;
 
 /**
@@ -20,7 +20,7 @@ final class AttributeIdType extends DomainUuidType
         return self::NAME;
     }
 
-    protected function convertToDomainId(string $value): DomainId
+    protected function convertToDomainId(string $value): DomainIdInterface
     {
         return new AttributeId($value);
     }
