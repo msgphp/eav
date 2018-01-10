@@ -17,8 +17,6 @@ final class AttributeRepository implements AttributeRepositoryInterface
 {
     use DomainEntityRepositoryTrait;
 
-    private $idFields = ['id'];
-
     /**
      * @return DomainCollectionInterface|Attribute[]
      */
