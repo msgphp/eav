@@ -10,7 +10,7 @@ composer require msgphp/eav
 
 ## Features
 
-- Doctrine and in-memory persistence
+- Doctrine persistence
 
 ## Documentation
 
