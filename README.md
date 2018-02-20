@@ -1,6 +1,7 @@
-# Entity-Attribute-Value Domain
+# Entity-Attribute-Value domain layer
 
-A domain layer providing basic EAV management.
+A domain layer providing basic [EAV](https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model)
+management.
 
 This package is part of the _Message driven PHP_ project.
 
