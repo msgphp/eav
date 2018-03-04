@@ -17,7 +17,7 @@ composer require msgphp/eav
 
 ## Features
 
-- Doctrine persistence
+- Doctrine persistence (with built-in discriminator support)
 - Standard supported attribute value types: `bool`, `int`, `float`, `string`, `\DateTimeInterface` and `null`
 
 ## Documentation
