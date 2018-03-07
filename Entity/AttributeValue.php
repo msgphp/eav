@@ -9,9 +9,8 @@ use MsgPhp\Eav\{AttributeIdInterface, AttributeValueIdInterface};
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class AttributeValue
+abstract class AttributeValue
 {
-    private $id;
     private $attribute;
     private $boolValue;
     private $intValue;
@@ -22,18 +21,14 @@ class AttributeValue
     private $value;
     private $isNull;
 
-    public function __construct(AttributeValueIdInterface $id, Attribute $attribute, $value)
+    public function __construct(Attribute $attribute, $value)
     {
-        $this->id = $id;
         $this->attribute = $attribute;
 
         $this->changeValue($value);
     }
 
-    public function getId(): AttributeValueIdInterface
-    {
-        return $this->id;
-    }
+    abstract public function getId(): AttributeValueIdInterface;
 
     public function getAttribute(): Attribute
     {

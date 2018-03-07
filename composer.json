@@ -18,7 +18,7 @@
         "exclude-from-classmap": ["/Tests/"]
     },
     "require": {
-        "msgphp/domain": "^0.1|^1.0"
+        "msgphp/domain": "^0.2|^1.0"
     },
     "require-dev": {
         "doctrine/orm": "^2.6",

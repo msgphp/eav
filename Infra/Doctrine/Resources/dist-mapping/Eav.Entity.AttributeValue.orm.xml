@@ -4,8 +4,6 @@
     xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <mapped-superclass name="MsgPhp\Eav\Entity\AttributeValue">
-        <id name="id" type="msgphp_attribute_value_id" />
-
         <field name="boolValue" type="boolean" nullable="true" />
         <field name="intValue" type="integer" nullable="true" />
         <field name="floatValue" type="float" nullable="true" />

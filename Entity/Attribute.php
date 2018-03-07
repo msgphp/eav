@@ -9,17 +9,7 @@ use MsgPhp\Eav\AttributeIdInterface;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class Attribute
+abstract class Attribute
 {
-    private $id;
-
-    public function __construct(AttributeIdInterface $id)
-    {
-        $this->id = $id;
-    }
-
-    public function getId(): AttributeIdInterface
-    {
-        return $this->id;
-    }
+    abstract public function getId(): AttributeIdInterface;
 }

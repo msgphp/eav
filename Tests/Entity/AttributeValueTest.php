@@ -16,9 +16,8 @@ final class AttributeValueTest extends TestCase
         $attribute->expects($this->any())
             ->method('getId')
             ->willReturn($this->createMock(AttributeIdInterface::class));
-        $attributeValue = new AttributeValue($id = $this->createMock(AttributeValueIdInterface::class), $attribute, 'value');
+        $attributeValue = $this->createEntity($this->createMock(AttributeValueIdInterface::class), $attribute, 'value');
 
-        $this->assertSame($id, $attributeValue->getId());
         $this->assertSame($attribute, $attributeValue->getAttribute());
         $this->assertSame($attribute->getId(), $attributeValue->getAttributeId());
         $this->assertSame('value', $attributeValue->getValue());
@@ -30,7 +29,7 @@ final class AttributeValueTest extends TestCase
      */
     public function testChangeValue($initialValue, $newValue): void
     {
-        $attributeValue = new AttributeValue($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), $initialValue);
+        $attributeValue = $this->createEntity($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), $initialValue);
         $checksum = $attributeValue->getChecksum();
 
         $this->assertSame($initialValue, $attributeValue->getValue());
@@ -98,9 +97,9 @@ final class AttributeValueTest extends TestCase
         if ($initial) {
             $this->expectException(\LogicException::class);
 
-            new AttributeValue($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), $value);
+            $this->createEntity($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), $value);
         } else {
-            $attributeValue = new AttributeValue($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), null);
+            $attributeValue = $this->createEntity($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), null);
 
             $this->expectException(\LogicException::class);
 
@@ -116,5 +115,24 @@ final class AttributeValueTest extends TestCase
         yield [new \stdClass(), false];
         yield [function (): void {}, true];
         yield [function (): string {}, false];
+    }
+
+    private function createEntity($id, $attribute, $value): AttributeValue
+    {
+        return new class($id, $attribute, $value) extends AttributeValue {
+            private $id;
+
+            public function __construct($id, $attribute, $value)
+            {
+                parent::__construct($attribute, $value);
+
+                $this->id = $id;
+            }
+
+            public function getId(): AttributeValueIdInterface
+            {
+                return $this->id;
+            }
+        };
     }
 }
