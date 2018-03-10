@@ -60,7 +60,10 @@ final class AttributeValueTest extends TestCase
      */
     public function testLazyGetValue($value, string $type): void
     {
-        $attributeValue = (new \ReflectionClass(AttributeValue::class))->newInstanceWithoutConstructor();
+        $attributeValue = $this->getMockBuilder(AttributeValue::class)
+            ->disableOriginalConstructor()
+            ->enableProxyingToOriginalMethods()
+            ->getMockForAbstractClass();
 
         $this->assertNull($attributeValue->getValue());
 
