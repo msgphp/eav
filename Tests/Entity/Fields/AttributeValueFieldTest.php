@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AttributeValueFieldTest extends TestCase
 {
-    public function testField(): void
+    public function testGetAttributeValue(): void
     {
         $value = $this->createMock(AttributeValue::class);
         $value->expects($this->any())
