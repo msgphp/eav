@@ -31,7 +31,8 @@ final class AttributesFieldTest extends TestCase
             ->willReturn(new AttributeId('attr2'));
         $object = $this->getObject(new DomainCollection([$attributeValue1, $attributeValue2, $attributeValue1]));
 
-        $this->assertSame([$attribute1, $attribute2], iterator_to_array($object->getAttributes()));
+        $this->assertInstanceOf(DomainCollectionInterface::class, $collection = $object->getAttributes());
+        $this->assertSame([$attribute1, $attribute2], iterator_to_array($collection));
     }
 
     private function getObject($value)
