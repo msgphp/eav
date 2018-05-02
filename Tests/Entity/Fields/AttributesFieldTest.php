@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AttributesFieldTest extends TestCase
 {
-    public function testGetAttributes(): void
+    public function testField(): void
     {
         $attributeValue1 = $this->createMock(AttributeValue::class);
         $attributeValue1->expects($this->any())

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Entity\Fields;
+namespace MsgPhp\Eav\Entity\Features;
 
 use MsgPhp\Eav\{AttributeIdInterface, AttributeValueIdInterface};
 use MsgPhp\Eav\Entity\{Attribute, AttributeValue};
@@ -10,17 +10,12 @@ use MsgPhp\Eav\Entity\{Attribute, AttributeValue};
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-trait AttributeValueField
+trait EntityAttributeValue
 {
     /** @var AttributeValue */
     private $attributeValue;
 
-    public function getAttributeValue(): AttributeValue
-    {
-        return $this->attributeValue;
-    }
-
-    public function getAttributeValueId(): AttributeValueIdInterface
+    public function getId(): AttributeValueIdInterface
     {
         return $this->attributeValue->getId();
     }
@@ -38,5 +33,10 @@ trait AttributeValueField
     public function getValue()
     {
         return $this->attributeValue->getValue();
+    }
+
+    public function changeValue($value): void
+    {
+        $this->attributeValue->changeValue($value);
     }
 }
