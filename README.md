@@ -1,4 +1,4 @@
-# Entity-Attribute-Value domain layer
+# Entity-Attribute-Value Domain
 
 A domain layer providing basic [EAV](https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model)
 management.

@@ -2,7 +2,7 @@
     "name": "msgphp/eav",
     "type": "library",
     "license": "MIT",
-    "description": "Entity-Attribute-Value domain layer",
+    "description": "A domain layer providing basic EAV management",
     "keywords": ["entity-attribute-value", "eav"],
     "authors": [
         {
