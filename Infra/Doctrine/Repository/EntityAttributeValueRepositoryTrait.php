@@ -16,9 +16,9 @@ trait EntityAttributeValueRepositoryTrait
 {
     use DomainEntityRepositoryTrait;
 
-    private function addAttributeCriteria(QueryBuilder $qb, AttributeIdInterface $attributeId, $value = null, string $alias = null): void
+    private function addAttributeCriteria(QueryBuilder $qb, AttributeIdInterface $attributeId, $value = null): void
     {
-        $field = ($this->alias ?? $alias).'.'.$this->attributeValueField;
+        $field = $this->alias.'.'.$this->attributeValueField;
 
         if (3 === func_num_args()) {
             $qb->join($field, 'attribute_value', Join::WITH, 'attribute_value.checksum = '.$this->addFieldParameter($qb, $this->attributeValueField, md5(serialize($value))));
