@@ -18,7 +18,7 @@
         "exclude-from-classmap": ["/Tests/"]
     },
     "require": {
-        "msgphp/domain": "^0.4"
+        "msgphp/domain": "~0.4"
     },
     "require-dev": {
         "doctrine/orm": "^2.6",
@@ -34,7 +34,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.5-dev"
+            "dev-master": "0.x-dev"
         }
     }
 }
