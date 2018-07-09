@@ -17,8 +17,9 @@ composer require msgphp/eav
 
 ## Features
 
+- Symfony messenger commands & events
 - Doctrine persistence
-- Standard supported attribute value types: `bool`, `int`, `float`, `string`, `\DateTimeInterface` and `null`
+- Default attribute value types: `bool`, `int`, `float`, `string`, `\DateTimeInterface` and `null`
 
 ## Documentation
 
