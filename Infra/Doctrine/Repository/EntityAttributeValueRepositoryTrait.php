@@ -20,7 +20,7 @@ trait EntityAttributeValueRepositoryTrait
     {
         $field = $this->alias.'.'.$this->attributeValueField;
 
-        if (3 === func_num_args()) {
+        if (3 === \func_num_args()) {
             $qb->join($field, 'attribute_value', Join::WITH, 'attribute_value.checksum = '.$this->addFieldParameter($qb, $this->attributeValueField, md5(serialize($value))));
         } else {
             $qb->join($field, 'attribute_value');

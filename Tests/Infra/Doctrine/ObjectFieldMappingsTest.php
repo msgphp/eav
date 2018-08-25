@@ -13,8 +13,8 @@ final class ObjectFieldMappingsTest extends TestCase
     public function testMapping(): void
     {
         $available = array_flip(array_map(function (string $file): string {
-            return 'MsgPhp\\Eav\\Entity\\'.basename(dirname($file)).'\\'.basename($file, '.php');
-        }, glob(dirname(dirname(dirname(__DIR__))).'/Entity/{Features,Fields}/*.php', \GLOB_BRACE)));
+            return 'MsgPhp\\Eav\\Entity\\'.basename(\dirname($file)).'\\'.basename($file, '.php');
+        }, glob(\dirname(__DIR__, 3).'/Entity/{Features,Fields}/*.php', \GLOB_BRACE)));
         unset($available[AttributesField::class]);
 
         $mappings = ObjectFieldMappings::provideObjectFieldMappings();

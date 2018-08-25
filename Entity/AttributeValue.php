@@ -74,18 +74,18 @@ abstract class AttributeValue
 
     protected function doSetValue($value): void
     {
-        if (is_bool($value)) {
+        if (\is_bool($value)) {
             $this->boolValue = $value;
-        } elseif (is_int($value)) {
+        } elseif (\is_int($value)) {
             $this->intValue = $value;
-        } elseif (is_float($value)) {
+        } elseif (\is_float($value)) {
             $this->floatValue = $value;
-        } elseif (is_string($value)) {
+        } elseif (\is_string($value)) {
             $this->stringValue = $value;
         } elseif ($value instanceof \DateTimeInterface) {
             $this->dateTimeValue = $value;
         } else {
-            throw new \LogicException(sprintf('Unsupported attribute value type "%s".', gettype($value)));
+            throw new \LogicException(sprintf('Unsupported attribute value type "%s".', \gettype($value)));
         }
     }
 
