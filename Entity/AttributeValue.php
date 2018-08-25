@@ -21,6 +21,11 @@ abstract class AttributeValue
     private $value;
     private $isNull;
 
+    public static function getChecksum($value): string
+    {
+        return md5(serialize([\gettype($value), static::prepareChecksumValue($value)]));
+    }
+
     public function __construct(Attribute $attribute, $value)
     {
         $this->attribute = $attribute;
@@ -40,9 +45,13 @@ abstract class AttributeValue
         return $this->attribute->getId();
     }
 
-    public function getValue()
+    final public function getValue()
     {
-        if ($this->isNull || null !== $this->value) {
+        if ($this->isNull) {
+            return null;
+        }
+
+        if (null !== $this->value) {
             return $this->value;
         }
 
@@ -53,23 +62,27 @@ abstract class AttributeValue
         return $this->value = $value;
     }
 
-    public function getChecksum(): string
+    final public function changeValue($value): void
     {
-        return $this->checksum;
-    }
+        $this->doClearValue();
+        $this->isNull = null === $value;
 
-    public function changeValue($value): void
-    {
-        $this->isNull = true;
-        $this->boolValue = $this->intValue = $this->floatValue = $this->stringValue = $this->dateTimeValue = $this->value = null;
-
-        if (null !== $value) {
+        if (!$this->isNull) {
             $this->doSetValue($value);
-
-            $this->value = $value;
         }
 
-        $this->checksum = md5(serialize($value));
+        $this->value = $value;
+        $this->checksum = static::getChecksum($value);
+    }
+
+    protected static function prepareChecksumValue($value)
+    {
+        return $value;
+    }
+
+    protected function doClearValue(): void
+    {
+        $this->boolValue = $this->intValue = $this->floatValue = $this->stringValue = $this->dateTimeValue = null;
     }
 
     protected function doSetValue($value): void

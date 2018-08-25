@@ -13,39 +13,47 @@ final class EntityAttributeValueTest extends TestCase
 {
     public function testFeature(): void
     {
-        $value = $this->createMock(AttributeValue::class);
-        $value->expects($this->once())
+        $attribute = $this->createMock(Attribute::class);
+        $attribute->expects($this->once())
             ->method('getId')
-            ->willReturn($id = $this->createMock(AttributeValueIdInterface::class));
-        $value->expects($this->once())
-            ->method('getAttribute')
-            ->willReturn($attribute = $this->createMock(Attribute::class));
-        $value->expects($this->once())
-            ->method('getAttributeId')
             ->willReturn($attributeId = $this->createMock(AttributeIdInterface::class));
-        $value->expects($this->once())
-            ->method('getValue')
-            ->willReturn('value');
-        $value->expects($this->once())
-            ->method('changeValue')
-            ->willReturn('some');
-        $object = $this->getObject($value);
+        /** @var AttributeValue $attributeValue */
+        $object = $this->getObject('value', $attribute, $attributeValue);
 
-        $this->assertSame($id, $object->getId());
         $this->assertSame($attribute, $object->getAttribute());
         $this->assertSame($attributeId, $object->getAttributeId());
         $this->assertSame('value', $object->getValue());
-        $this->assertNull($object->changeValue('some'));
+        $this->assertSame('value', $attributeValue->getValue());
+        $this->assertNull($object->changeValue('other'));
+        $this->assertSame('other', $object->getValue());
+        $this->assertSame('other', $attributeValue->getValue());
     }
 
-    private function getObject($value)
+    private function getObject($value, $attribute, &$attributeValue = null)
     {
-        return new class($value) {
+        $attributeValueId = $this->createMock(AttributeValueIdInterface::class);
+        $attributeValue = new class($attributeValueId, $attribute, $value) extends AttributeValue {
+            private $id;
+
+            public function __construct($id, $attribute, $value)
+            {
+                parent::__construct($attribute, $value);
+
+                $this->id = $id;
+            }
+
+            public function getId(): AttributeValueIdInterface
+            {
+                return $this->id;
+            }
+        };
+
+        return new class($attributeValue) {
             use EntityAttributeValue;
 
-            public function __construct($value)
+            public function __construct($attributeValue)
             {
-                $this->attributeValue = $value;
+                $this->attributeValue = $attributeValue;
             }
         };
     }
