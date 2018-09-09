@@ -14,19 +14,19 @@ final class EntityAttributeValueTest extends TestCase
     public function testFeature(): void
     {
         $attribute = $this->createMock(Attribute::class);
-        $attribute->expects($this->once())
+        $attribute->expects(self::once())
             ->method('getId')
             ->willReturn($attributeId = $this->createMock(AttributeIdInterface::class));
         /** @var AttributeValue $attributeValue */
         $object = $this->getObject('value', $attribute, $attributeValue);
 
-        $this->assertSame($attribute, $object->getAttribute());
-        $this->assertSame($attributeId, $object->getAttributeId());
-        $this->assertSame('value', $object->getValue());
-        $this->assertSame('value', $attributeValue->getValue());
-        $this->assertNull($object->changeValue('other'));
-        $this->assertSame('other', $object->getValue());
-        $this->assertSame('other', $attributeValue->getValue());
+        self::assertSame($attribute, $object->getAttribute());
+        self::assertSame($attributeId, $object->getAttributeId());
+        self::assertSame('value', $object->getValue());
+        self::assertSame('value', $attributeValue->getValue());
+        self::assertNull($object->changeValue('other'));
+        self::assertSame('other', $object->getValue());
+        self::assertSame('other', $attributeValue->getValue());
     }
 
     private function getObject($value, $attribute, &$attributeValue = null)

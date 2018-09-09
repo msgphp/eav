@@ -16,23 +16,23 @@ final class AttributesFieldTest extends TestCase
     public function testField(): void
     {
         $attributeValue1 = $this->createMock(AttributeValue::class);
-        $attributeValue1->expects($this->any())
+        $attributeValue1->expects(self::any())
             ->method('getAttribute')
             ->willReturn($attribute1 = $this->createMock(Attribute::class));
         $attributeValue2 = $this->createMock(AttributeValue::class);
-        $attributeValue2->expects($this->any())
+        $attributeValue2->expects(self::any())
             ->method('getAttribute')
             ->willReturn($attribute2 = $this->createMock(Attribute::class));
-        $attribute1->expects($this->any())
+        $attribute1->expects(self::any())
             ->method('getId')
             ->willReturn(new AttributeId('attr1'));
-        $attribute2->expects($this->any())
+        $attribute2->expects(self::any())
             ->method('getId')
             ->willReturn(new AttributeId('attr2'));
         $object = $this->getObject(new DomainCollection([$attributeValue1, $attributeValue2, $attributeValue1]));
 
-        $this->assertInstanceOf(DomainCollectionInterface::class, $collection = $object->getAttributes());
-        $this->assertSame([$attribute1, $attribute2], iterator_to_array($collection));
+        self::assertInstanceOf(DomainCollectionInterface::class, $collection = $object->getAttributes());
+        self::assertSame([$attribute1, $attribute2], iterator_to_array($collection));
     }
 
     private function getObject($value)

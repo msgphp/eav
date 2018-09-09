@@ -13,14 +13,14 @@ final class AttributeValueTest extends TestCase
     public function testCreate(): void
     {
         $attribute = $this->createMock(Attribute::class);
-        $attribute->expects($this->any())
+        $attribute->expects(self::any())
             ->method('getId')
             ->willReturn($this->createMock(AttributeIdInterface::class));
         $attributeValue = $this->createEntity($this->createMock(AttributeValueIdInterface::class), $attribute, 'value');
 
-        $this->assertSame($attribute, $attributeValue->getAttribute());
-        $this->assertSame($attribute->getId(), $attributeValue->getAttributeId());
-        $this->assertSame('value', $attributeValue->getValue());
+        self::assertSame($attribute, $attributeValue->getAttribute());
+        self::assertSame($attribute->getId(), $attributeValue->getAttributeId());
+        self::assertSame('value', $attributeValue->getValue());
     }
 
     /**
@@ -30,19 +30,19 @@ final class AttributeValueTest extends TestCase
     {
         $attributeValue = $this->createEntity($this->createMock(AttributeValueIdInterface::class), $this->createMock(Attribute::class), $initialValue);
 
-        $this->assertSame($initialValue, $attributeValue->getValue());
+        self::assertSame($initialValue, $attributeValue->getValue());
 
         $attributeValue->changeValue($newValue);
 
-        $this->assertSame($newValue, $attributeValue->getValue());
+        self::assertSame($newValue, $attributeValue->getValue());
     }
 
     public function testGetChecksum(): void
     {
-        $this->assertSame(AttributeValue::getChecksum('foo'), AttributeValue::getChecksum('foo'));
-        $this->assertSame(AttributeValue::getChecksum(1), AttributeValue::getChecksum(1));
-        $this->assertNotSame(AttributeValue::getChecksum('foo'), AttributeValue::getChecksum('bar'));
-        $this->assertNotSame(AttributeValue::getChecksum(1), AttributeValue::getChecksum('1'));
+        self::assertSame(AttributeValue::getChecksum('foo'), AttributeValue::getChecksum('foo'));
+        self::assertSame(AttributeValue::getChecksum(1), AttributeValue::getChecksum(1));
+        self::assertNotSame(AttributeValue::getChecksum('foo'), AttributeValue::getChecksum('bar'));
+        self::assertNotSame(AttributeValue::getChecksum(1), AttributeValue::getChecksum('1'));
     }
 
     public function provideAttributeValues(): iterable
@@ -70,7 +70,7 @@ final class AttributeValueTest extends TestCase
             ->enableProxyingToOriginalMethods()
             ->getMockForAbstractClass();
 
-        $this->assertNull($attributeValue->getValue());
+        self::assertNull($attributeValue->getValue());
 
         $propertyValueRefl = new \ReflectionProperty(AttributeValue::class, $type.'Value');
         $propertyValueRefl->setAccessible(true);
@@ -80,7 +80,7 @@ final class AttributeValueTest extends TestCase
         $propertyValueRefl->setAccessible(true);
         $propertyValueRefl->setValue($attributeValue, false);
 
-        $this->assertSame($value, $attributeValue->getValue());
+        self::assertSame($value, $attributeValue->getValue());
     }
 
     public function provideLazyAttributeValues(): iterable

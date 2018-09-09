@@ -21,6 +21,6 @@ final class ObjectFieldMappingsTest extends TestCase
         $mappings = array_keys($mappings instanceof \Traversable ? iterator_to_array($mappings) : $mappings);
         sort($mappings);
 
-        $this->assertSame(array_keys($available), $mappings);
+        self::assertSame(array_keys($available), $mappings);
     }
 }
