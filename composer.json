@@ -3,7 +3,7 @@
     "type": "library",
     "license": "MIT",
     "description": "A domain layer providing basic EAV management",
-    "keywords": ["entity-attribute-value", "eav"],
+    "keywords": ["rich domain model", "entity-attribute-value", "eav"],
     "authors": [
         {
             "name": "Roland Franssen",
