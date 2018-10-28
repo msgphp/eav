@@ -6,10 +6,10 @@ namespace MsgPhp\Eav\Tests\Infra\Doctrine;
 
 use MsgPhp\Domain\Infra\Doctrine\MappingConfig;
 use MsgPhp\Eav\Entity\Fields\AttributesField;
-use MsgPhp\Eav\Infra\Doctrine\ObjectFieldMappings;
+use MsgPhp\Eav\Infra\Doctrine\ObjectMappings;
 use PHPUnit\Framework\TestCase;
 
-final class ObjectFieldMappingsTest extends TestCase
+final class ObjectMappingsTest extends TestCase
 {
     public function testMapping(): void
     {
@@ -18,7 +18,7 @@ final class ObjectFieldMappingsTest extends TestCase
         }, glob(\dirname(__DIR__, 3).'/Entity/{Features,Fields}/*.php', \GLOB_BRACE)));
         unset($available[AttributesField::class]);
 
-        $mappings = ObjectFieldMappings::provideObjectFieldMappings(new MappingConfig([]));
+        $mappings = ObjectMappings::provideObjectMappings(new MappingConfig([]));
         $mappings = array_keys($mappings instanceof \Traversable ? iterator_to_array($mappings) : $mappings);
         sort($mappings);
 
