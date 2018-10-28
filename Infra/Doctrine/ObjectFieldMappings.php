@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Infra\Doctrine;
 
-use MsgPhp\Domain\Infra\Doctrine\ObjectFieldMappingsProviderInterface;
+use MsgPhp\Domain\Infra\Doctrine\{MappingConfig, ObjectFieldMappingsProviderInterface};
 use MsgPhp\Eav\Entity\{AttributeValue, Features};
 
 /**
@@ -14,7 +14,7 @@ use MsgPhp\Eav\Entity\{AttributeValue, Features};
  */
 final class ObjectFieldMappings implements ObjectFieldMappingsProviderInterface
 {
-    public static function provideObjectFieldMappings(): iterable
+    public static function provideObjectFieldMappings(MappingConfig $config): iterable
     {
         yield Features\EntityAttributeValue::class => [
             'attributeValue' => [
