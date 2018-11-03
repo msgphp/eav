@@ -23,8 +23,7 @@
     "require-dev": {
         "doctrine/orm": "^2.6",
         "ramsey/uuid": "^3.7",
-        "symfony/phpunit-bridge": "^3.4.9|^4.0.9",
-        "symfony/var-dumper": "^3.4|^4.0"
+        "symfony/phpunit-bridge": "^3.4.9|^4.0.9"
     },
     "config": {
         "preferred-install": {
