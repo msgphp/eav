@@ -17,9 +17,13 @@ trait EntityAttributeValueRepositoryTrait
 {
     use DomainEntityRepositoryTrait;
 
+    private $attributeAlias = 'attribute';
+    private $attributeValueAlias = 'attribute_value';
+    private $attributeValueField = 'attributeValue';
+
     private function addAttributeCriteria(QueryBuilder $qb, AttributeIdInterface $attributeId, $value = null): void
     {
-        $field = $this->alias.'.'.$this->attributeValueField;
+        $field = $this->getAlias().'.'.$this->attributeValueField;
         $targetClass = $this->em->getClassMetadata($this->class)->getAssociationMapping($this->attributeValueField)['targetEntity'];
 
         if (!is_subclass_of($targetClass, AttributeValue::class)) {
@@ -27,11 +31,11 @@ trait EntityAttributeValueRepositoryTrait
         }
 
         if (3 === \func_num_args()) {
-            $qb->join($field, 'attribute_value', Join::WITH, 'attribute_value.checksum = '.$this->addFieldParameter($qb, $this->attributeValueField, $targetClass::getChecksum($value)));
+            $qb->join($field, $this->attributeValueAlias, Join::WITH, $this->attributeValueAlias.'.checksum = '.$this->addFieldParameter($qb, $this->attributeValueField, $targetClass::getChecksum($value)));
         } else {
-            $qb->join($field, 'attribute_value');
+            $qb->join($field, $this->attributeValueAlias);
         }
 
-        $qb->join('attribute_value.attribute', 'attribute', Join::WITH, 'attribute.id = '.$this->addFieldParameter($qb, 'attribute', $attributeId));
+        $qb->join($this->attributeValueAlias.'.attribute', $this->attributeAlias, Join::WITH, $this->attributeAlias.'.id = '.$this->addFieldParameter($qb, 'attribute', $attributeId));
     }
 }
