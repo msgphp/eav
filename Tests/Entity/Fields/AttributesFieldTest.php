@@ -18,17 +18,21 @@ final class AttributesFieldTest extends TestCase
         $attributeValue1 = $this->createMock(AttributeValue::class);
         $attributeValue1->expects(self::any())
             ->method('getAttribute')
-            ->willReturn($attribute1 = $this->createMock(Attribute::class));
+            ->willReturn($attribute1 = $this->createMock(Attribute::class))
+        ;
         $attributeValue2 = $this->createMock(AttributeValue::class);
         $attributeValue2->expects(self::any())
             ->method('getAttribute')
-            ->willReturn($attribute2 = $this->createMock(Attribute::class));
+            ->willReturn($attribute2 = $this->createMock(Attribute::class))
+        ;
         $attribute1->expects(self::any())
             ->method('getId')
-            ->willReturn(new AttributeId('attr1'));
+            ->willReturn(new AttributeId('attr1'))
+        ;
         $attribute2->expects(self::any())
             ->method('getId')
-            ->willReturn(new AttributeId('attr2'));
+            ->willReturn(new AttributeId('attr2'))
+        ;
         $object = $this->getObject(new DomainCollection([$attributeValue1, $attributeValue2, $attributeValue1]));
 
         self::assertInstanceOf(DomainCollectionInterface::class, $collection = $object->getAttributes());

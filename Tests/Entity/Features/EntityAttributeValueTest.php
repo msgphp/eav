@@ -16,7 +16,8 @@ final class EntityAttributeValueTest extends TestCase
         $attribute = $this->createMock(Attribute::class);
         $attribute->expects(self::once())
             ->method('getId')
-            ->willReturn($attributeId = $this->createMock(AttributeIdInterface::class));
+            ->willReturn($attributeId = $this->createMock(AttributeIdInterface::class))
+        ;
         /** @var AttributeValue $attributeValue */
         $object = $this->getObject('value', $attribute, $attributeValue);
 

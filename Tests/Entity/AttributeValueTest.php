@@ -15,7 +15,8 @@ final class AttributeValueTest extends TestCase
         $attribute = $this->createMock(Attribute::class);
         $attribute->expects(self::any())
             ->method('getId')
-            ->willReturn($this->createMock(AttributeIdInterface::class));
+            ->willReturn($this->createMock(AttributeIdInterface::class))
+        ;
         $attributeValue = $this->createEntity($this->createMock(AttributeValueIdInterface::class), $attribute, 'value');
 
         self::assertSame($attribute, $attributeValue->getAttribute());
@@ -68,7 +69,8 @@ final class AttributeValueTest extends TestCase
         $attributeValue = $this->getMockBuilder(AttributeValue::class)
             ->disableOriginalConstructor()
             ->enableProxyingToOriginalMethods()
-            ->getMockForAbstractClass();
+            ->getMockForAbstractClass()
+        ;
 
         self::assertNull($attributeValue->getValue());
 
