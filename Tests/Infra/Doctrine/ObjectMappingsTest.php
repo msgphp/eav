@@ -15,7 +15,7 @@ final class ObjectMappingsTest extends TestCase
     {
         $available = array_flip(array_map(function (string $file): string {
             return 'MsgPhp\\Eav\\Entity\\'.basename(\dirname($file)).'\\'.basename($file, '.php');
-        }, glob(\dirname(__DIR__, 3).'/Entity/{Features,Fields}/*.php', \GLOB_BRACE)));
+        }, array_merge(glob(\dirname(__DIR__, 3).'/Entity/Features/*.php'), glob(\dirname(__DIR__, 3).'/Entity/Fields/*.php'))));
         unset($available[AttributesField::class]);
 
         $mappings = ObjectMappings::provideObjectMappings(new MappingConfig([]));
