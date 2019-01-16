@@ -39,6 +39,9 @@ final class AttributesFieldTest extends TestCase
         self::assertSame([$attribute1, $attribute2], iterator_to_array($collection));
     }
 
+    /**
+     * @return object
+     */
     private function getObject($value)
     {
         return new class($value) {
