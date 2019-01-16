@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Entity\Fields;
 
-use MsgPhp\Domain\DomainCollectionInterface;
-use MsgPhp\Domain\Factory\DomainCollectionFactory;
+use MsgPhp\Domain\{DomainCollection, DomainCollectionInterface};
 use MsgPhp\Eav\Entity\{Attribute, AttributeValue};
 
 /**
@@ -29,7 +28,7 @@ trait AttributesField
             $attributes[$attributeId] = $attribute;
         }
 
-        return DomainCollectionFactory::create(array_values($attributes));
+        return new DomainCollection(array_values($attributes));
     }
 
     /**
