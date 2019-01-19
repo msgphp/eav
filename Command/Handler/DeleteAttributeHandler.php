@@ -36,6 +36,6 @@ final class DeleteAttributeHandler
         }
 
         $this->repository->delete($attribute);
-        $this->dispatch(AttributeDeletedEvent::class, [$attribute]);
+        $this->dispatch(AttributeDeletedEvent::class, compact('attribute'));
     }
 }
