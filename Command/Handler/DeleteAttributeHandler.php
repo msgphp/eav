@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Command\Handler;
 
 use MsgPhp\Domain\Exception\EntityNotFoundException;
-use MsgPhp\Domain\Factory\EntityAwareFactoryInterface;
+use MsgPhp\Domain\Factory\DomainObjectFactoryInterface;
 use MsgPhp\Domain\Message\{DomainMessageBusInterface, MessageDispatchingTrait};
 use MsgPhp\Eav\Command\DeleteAttributeCommand;
 use MsgPhp\Eav\Event\AttributeDeletedEvent;
@@ -20,7 +20,7 @@ final class DeleteAttributeHandler
 
     private $repository;
 
-    public function __construct(EntityAwareFactoryInterface $factory, DomainMessageBusInterface $bus, AttributeRepositoryInterface $repository)
+    public function __construct(DomainObjectFactoryInterface $factory, DomainMessageBusInterface $bus, AttributeRepositoryInterface $repository)
     {
         $this->factory = $factory;
         $this->bus = $bus;
