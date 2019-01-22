@@ -12,7 +12,9 @@ use MsgPhp\Eav\Entity\{Attribute, AttributeValue};
  */
 trait EntityAttributeValue
 {
-    /** @var AttributeValue */
+    /**
+     * @var AttributeValue
+     */
     private $attributeValue;
 
     public function getId(): AttributeValueIdInterface
@@ -30,11 +32,17 @@ trait EntityAttributeValue
         return $this->attributeValue->getAttributeId();
     }
 
+    /**
+     * @return mixed
+     */
     public function getValue()
     {
         return $this->attributeValue->getValue();
     }
 
+    /**
+     * @param mixed $value
+     */
     public function changeValue($value): void
     {
         $this->attributeValue->changeValue($value);

@@ -14,20 +14,57 @@ abstract class AttributeValue
 {
     use AttributeField;
 
+    /**
+     * @var bool|null
+     */
     private $boolValue;
+
+    /**
+     * @var int|null
+     */
     private $intValue;
+
+    /**
+     * @var float|null
+     */
     private $floatValue;
+
+    /**
+     * @var string|null
+     */
     private $stringValue;
+
+    /**
+     * @var \DateTimeInterface|null
+     */
     private $dateTimeValue;
+
+    /**
+     * @var string
+     */
     private $checksum;
-    private $value;
+
+    /**
+     * @var bool
+     */
     private $isNull;
 
+    /**
+     * @var mixed
+     */
+    private $value;
+
+    /**
+     * @param mixed $value
+     */
     public static function getChecksum($value): string
     {
         return md5(serialize([\gettype($value), static::prepareChecksumValue($value)]));
     }
 
+    /**
+     * @param mixed $value
+     */
     public function __construct(Attribute $attribute, $value)
     {
         $this->attribute = $attribute;
@@ -37,6 +74,9 @@ abstract class AttributeValue
 
     abstract public function getId(): AttributeValueIdInterface;
 
+    /**
+     * @return mixed
+     */
     final public function getValue()
     {
         if ($this->isNull) {
@@ -54,6 +94,9 @@ abstract class AttributeValue
         return $this->value = $value;
     }
 
+    /**
+     * @param mixed $value
+     */
     final public function changeValue($value): void
     {
         $this->doClearValue();
@@ -67,6 +110,11 @@ abstract class AttributeValue
         $this->checksum = static::getChecksum($value);
     }
 
+    /**
+     * @param mixed $value
+     *
+     * @return mixed
+     */
     protected static function prepareChecksumValue($value)
     {
         return $value;
@@ -77,6 +125,9 @@ abstract class AttributeValue
         $this->boolValue = $this->intValue = $this->floatValue = $this->stringValue = $this->dateTimeValue = null;
     }
 
+    /**
+     * @param mixed $value
+     */
     protected function doSetValue($value): void
     {
         if (\is_bool($value)) {
@@ -94,6 +145,9 @@ abstract class AttributeValue
         }
     }
 
+    /**
+     * @return mixed
+     */
     protected function doGetValue()
     {
         return $this->boolValue ?? $this->intValue ?? $this->floatValue ?? $this->stringValue ?? $this->dateTimeValue;

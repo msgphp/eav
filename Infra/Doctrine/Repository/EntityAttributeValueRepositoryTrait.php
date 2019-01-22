@@ -17,10 +17,24 @@ trait EntityAttributeValueRepositoryTrait
 {
     use DomainEntityRepositoryTrait;
 
+    /**
+     * @var string
+     */
     private $attributeAlias = 'attribute';
+
+    /**
+     * @var string
+     */
     private $attributeValueAlias = 'attribute_value';
+
+    /**
+     * @var string
+     */
     private $attributeValueField = 'attributeValue';
 
+    /**
+     * @param mixed $value
+     */
     private function addAttributeCriteria(QueryBuilder $qb, AttributeIdInterface $attributeId, $value = null): void
     {
         $field = $this->getAlias().'.'.$this->attributeValueField;

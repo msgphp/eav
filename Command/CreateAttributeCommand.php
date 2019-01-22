@@ -9,6 +9,9 @@ namespace MsgPhp\Eav\Command;
  */
 class CreateAttributeCommand
 {
+    /**
+     * @var array
+     */
     public $context;
 
     final public function __construct(array $context)

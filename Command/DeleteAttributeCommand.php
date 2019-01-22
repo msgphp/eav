@@ -11,6 +11,9 @@ use MsgPhp\Eav\AttributeIdInterface;
  */
 class DeleteAttributeCommand
 {
+    /**
+     * @var AttributeIdInterface
+     */
     public $attributeId;
 
     final public function __construct(AttributeIdInterface $attributeId)

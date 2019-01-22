@@ -11,6 +11,9 @@ use MsgPhp\Eav\Entity\Attribute;
  */
 class AttributeCreatedEvent
 {
+    /**
+     * @var Attribute
+     */
     public $attribute;
 
     final public function __construct(Attribute $attribute)

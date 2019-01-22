@@ -18,6 +18,9 @@ final class DeleteAttributeHandler
 {
     use MessageDispatchingTrait;
 
+    /**
+     * @var AttributeRepositoryInterface
+     */
     private $repository;
 
     public function __construct(DomainObjectFactoryInterface $factory, DomainMessageBusInterface $bus, AttributeRepositoryInterface $repository)
