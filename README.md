@@ -14,7 +14,7 @@ composer require msgphp/eav
 ## Documentation
 
 - Read the [main documentation](https://msgphp.github.io/docs/)
-- Browse the [API documentation](https://msgphp.github.io/api/MsgPhp/Eav.html)
+- Checkout the [Symfony Bundle](https://github.com/msgphp/eav-bundle)
 - Try the Symfony [demo application](https://github.com/msgphp/symfony-demo-app)
 - Get support on [Symfony's Slack `#msgphp` channel](https://symfony.com/slack-invite) or [raise an issue](https://github.com/msgphp/msgphp/issues/new)
 
