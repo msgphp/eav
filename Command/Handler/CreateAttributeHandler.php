@@ -38,6 +38,6 @@ final class CreateAttributeHandler
         $attribute = $this->factory->create(Attribute::class, $context);
 
         $this->repository->save($attribute);
-        $this->dispatch(AttributeCreatedEvent::class, compact('attribute'));
+        $this->dispatch(AttributeCreatedEvent::class, compact('attribute', 'context'));
     }
 }

@@ -16,8 +16,14 @@ class AttributeCreatedEvent
      */
     public $attribute;
 
-    final public function __construct(Attribute $attribute)
+    /**
+     * @var array
+     */
+    public $context;
+
+    final public function __construct(Attribute $attribute, array $context)
     {
         $this->attribute = $attribute;
+        $this->context = $context;
     }
 }
