@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Entity;
 
-use MsgPhp\Eav\{AttributeIdInterface, AttributeValueIdInterface};
+use MsgPhp\Eav\AttributeValueIdInterface;
+use MsgPhp\Eav\Entity\Fields\AttributeField;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
 abstract class AttributeValue
 {
-    private $attribute;
+    use AttributeField;
+
     private $boolValue;
     private $intValue;
     private $floatValue;
@@ -34,16 +36,6 @@ abstract class AttributeValue
     }
 
     abstract public function getId(): AttributeValueIdInterface;
-
-    public function getAttribute(): Attribute
-    {
-        return $this->attribute;
-    }
-
-    public function getAttributeId(): AttributeIdInterface
-    {
-        return $this->attribute->getId();
-    }
 
     final public function getValue()
     {
