@@ -35,10 +35,7 @@ final class CreateAttributeHandlerTest extends TestCase
                 self::assertTrue($message->attribute->getId()->isEmpty());
                 self::assertSame('value', $message->attribute->field);
                 self::assertTrue($message->attribute->saved);
-                self::assertArrayHasKey('id', $message->context);
-                self::assertSame($message->attribute->getId(), $message->context['id']);
-                self::assertArrayHasKey('field', $message->context);
-                self::assertSame($message->attribute->field, $message->context['field']);
+                self::assertSame(['field' => 'value', 'id' => $message->attribute->getId()], $message->context);
 
                 return true;
             }))
@@ -67,9 +64,7 @@ final class CreateAttributeHandlerTest extends TestCase
                 self::assertInstanceOf(TestAttribute::class, $message->attribute);
                 self::assertSame($id, $message->attribute->getId());
                 self::assertNull($message->attribute->field);
-                self::assertArrayHasKey('id', $message->context);
-                self::assertSame($message->attribute->getId(), $message->context['id']);
-                self::assertArrayNotHasKey('field', $message->context);
+                self::assertSame(['id' => $message->attribute->getId()], $message->context);
 
                 return true;
             }))
