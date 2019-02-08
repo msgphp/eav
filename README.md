@@ -3,7 +3,7 @@
 A domain layer providing basic [EAV](https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model)
 management.
 
-[![Latest Stable Version](https://poser.pugx.org/msgphp/eav/v/stable)](https://packagist.org/packages/msgphp/eav)
+[![Latest Stable Version][packagist:img]][packagist]
 
 ## Installation
 
@@ -21,3 +21,6 @@ composer require msgphp/eav
 ## Contributing
 
 This repository is **READ ONLY**. Issues and pull requests should be submitted in the [main development repository](https://github.com/msgphp/msgphp).
+
+[packagist]: https://packagist.org/packages/msgphp/domain
+[packagist:img]: https://img.shields.io/packagist/v/msgphp/domain.svg?style=flat-square
