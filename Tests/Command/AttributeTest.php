@@ -52,4 +52,12 @@ final class AttributeTest extends TestCase
         self::assertMessageIsDispatchedOnce(Event\AttributeDeletedEvent::class);
         self::assertCount(0, self::createAttributeRepository()->findAll());
     }
+
+    public function testDeleteUnknownId(): void
+    {
+        self::$bus->dispatch(new Command\DeleteAttributeCommand(self::createDomainFactory()->create(AttributeIdInterface::class)));
+
+        self::assertMessageIsNotDispatched(Event\AttributeDeletedEvent::class);
+        self::addToAssertionCount(1);
+    }
 }
