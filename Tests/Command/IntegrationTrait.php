@@ -8,10 +8,9 @@ use MsgPhp\Domain\Factory\DomainObjectFactory as BaseDomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\DomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\Test\EntityManagerTrait;
 use MsgPhp\Domain\Infra\Messenger\Test\MessageBusTrait;
-use MsgPhp\Eav\{AttributeId, AttributeIdInterface, AttributeValueId, AttributeValueIdInterface};
+use MsgPhp\Eav\{AttributeId, AttributeIdInterface};
 use MsgPhp\Eav\{Command, Entity};
-use MsgPhp\Eav\Infra\Doctrine\Repository;
-use MsgPhp\Eav\Infra\Doctrine\Type\{AttributeIdType, AttributeValueIdType};
+use MsgPhp\Eav\Infra\Doctrine\{Repository, Type};
 use MsgPhp\Eav\Tests\Fixtures\Entities;
 
 trait IntegrationTrait
@@ -58,8 +57,7 @@ trait IntegrationTrait
 
     protected static function getEntityIdTypes(): iterable
     {
-        yield AttributeIdType::class => AttributeId::class;
-        yield AttributeValueIdType::class => AttributeValueId::class;
+        yield Type\AttributeIdType::class => AttributeId::class;
     }
 
     protected function setUp(): void
@@ -77,9 +75,7 @@ trait IntegrationTrait
     {
         return new DomainObjectFactory(new BaseDomainObjectFactory([
             AttributeIdInterface::class => AttributeId::class,
-            AttributeValueIdInterface::class => AttributeValueId::class,
             Entity\Attribute::class => Entities\TestAttribute::class,
-            Entity\AttributeValue::class => Entities\TestAttributeValue::class,
         ]), self::$em);
     }
 
