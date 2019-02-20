@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AttributeTest extends TestCase
 {
-    use IntegrationTrait;
+    use IntegrationTestTrait;
 
     public function testCreate(): void
     {

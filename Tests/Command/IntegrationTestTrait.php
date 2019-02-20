@@ -6,17 +6,17 @@ namespace MsgPhp\Eav\Tests\Command;
 
 use MsgPhp\Domain\Factory\DomainObjectFactory as BaseDomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\DomainObjectFactory;
-use MsgPhp\Domain\Infra\Doctrine\Test\EntityManagerTrait;
-use MsgPhp\Domain\Infra\Messenger\Test\MessageBusTrait;
+use MsgPhp\Domain\Infra\Doctrine\Test\EntityManagerTestTrait;
+use MsgPhp\Domain\Infra\Messenger\Test\MessageBusTestTrait;
 use MsgPhp\Eav\{AttributeId, AttributeIdInterface};
 use MsgPhp\Eav\{Command, Entity};
 use MsgPhp\Eav\Infra\Doctrine\{Repository, Type};
 use MsgPhp\Eav\Tests\Fixtures\Entities;
 
-trait IntegrationTrait
+trait IntegrationTestTrait
 {
-    use EntityManagerTrait;
-    use MessageBusTrait;
+    use EntityManagerTestTrait;
+    use MessageBusTestTrait;
 
     public static function setUpBeforeClass(): void
     {
