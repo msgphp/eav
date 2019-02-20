@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.9.1](https://github.com/msgphp/eav/tree/v0.9.1) (2019-02-20)
+
+- disallow empty string ID values [\#281](https://github.com/msgphp/msgphp/pull/281)
+
+
 ## [v0.9.0](https://github.com/msgphp/eav/tree/v0.9.0) (2019-02-09)
 
 - Pass context along event messages [\#278](https://github.com/msgphp/msgphp/pull/278)
