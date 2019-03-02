@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Tests\Command;
 
-use MsgPhp\Eav\{AttributeIdInterface, Command, Event};
+use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\Command;
+use MsgPhp\Eav\Event;
 use PHPUnit\Framework\TestCase;
 
 final class AttributeTest extends TestCase

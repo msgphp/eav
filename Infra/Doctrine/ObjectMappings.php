@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Infra\Doctrine;
 
-use MsgPhp\Domain\Infra\Doctrine\{MappingConfig, ObjectMappingProviderInterface};
-use MsgPhp\Eav\Entity\{Attribute, AttributeValue, Features, Fields};
+use MsgPhp\Domain\Infra\Doctrine\MappingConfig;
+use MsgPhp\Domain\Infra\Doctrine\ObjectMappingProviderInterface;
+use MsgPhp\Eav\Entity\Attribute;
+use MsgPhp\Eav\Entity\AttributeValue;
+use MsgPhp\Eav\Entity\Features;
+use MsgPhp\Eav\Entity\Fields;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>

@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Command\Handler;
 
 use MsgPhp\Domain\Factory\DomainObjectFactoryInterface;
-use MsgPhp\Domain\Message\{DomainMessageBusInterface, MessageDispatchingTrait};
+use MsgPhp\Domain\Message\DomainMessageBusInterface;
+use MsgPhp\Domain\Message\MessageDispatchingTrait;
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\Command\CreateAttributeCommand;
 use MsgPhp\Eav\Entity\Attribute;

@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Entity\Features;
 
-use MsgPhp\Eav\{AttributeIdInterface, AttributeValueIdInterface};
-use MsgPhp\Eav\Entity\{Attribute, AttributeValue};
+use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\AttributeValueIdInterface;
+use MsgPhp\Eav\Entity\Attribute;
+use MsgPhp\Eav\Entity\AttributeValue;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>

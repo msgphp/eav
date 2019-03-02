@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Tests\Fixtures\Entities;
 
-use MsgPhp\Eav\{ScalarAttributeId, AttributeIdInterface};
+use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\Entity\Attribute;
+use MsgPhp\Eav\ScalarAttributeId;
 
 /**
  * @Doctrine\ORM\Mapping\Entity()

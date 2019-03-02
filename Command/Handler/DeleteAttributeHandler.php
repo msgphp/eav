@@ -6,7 +6,8 @@ namespace MsgPhp\Eav\Command\Handler;
 
 use MsgPhp\Domain\Exception\EntityNotFoundException;
 use MsgPhp\Domain\Factory\DomainObjectFactoryInterface;
-use MsgPhp\Domain\Message\{DomainMessageBusInterface, MessageDispatchingTrait};
+use MsgPhp\Domain\Message\DomainMessageBusInterface;
+use MsgPhp\Domain\Message\MessageDispatchingTrait;
 use MsgPhp\Eav\Command\DeleteAttributeCommand;
 use MsgPhp\Eav\Event\AttributeDeletedEvent;
 use MsgPhp\Eav\Repository\AttributeRepositoryInterface;

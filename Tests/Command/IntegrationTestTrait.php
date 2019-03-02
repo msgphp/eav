@@ -8,9 +8,12 @@ use MsgPhp\Domain\Factory\DomainObjectFactory as BaseDomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\DomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\Test\EntityManagerTestTrait;
 use MsgPhp\Domain\Infra\Messenger\Test\MessageBusTestTrait;
-use MsgPhp\Eav\{ScalarAttributeId, AttributeIdInterface};
-use MsgPhp\Eav\{Command, Entity};
-use MsgPhp\Eav\Infra\Doctrine\{Repository, Type};
+use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\Command;
+use MsgPhp\Eav\Entity;
+use MsgPhp\Eav\Infra\Doctrine\Repository;
+use MsgPhp\Eav\Infra\Doctrine\Type;
+use MsgPhp\Eav\ScalarAttributeId;
 use MsgPhp\Eav\Tests\Fixtures\Entities;
 
 trait IntegrationTestTrait
