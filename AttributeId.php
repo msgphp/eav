@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav;
 
-use MsgPhp\Domain\DomainId;
+use MsgPhp\Domain\DomainIdTrait;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-final class AttributeId extends DomainId implements AttributeIdInterface
+final class AttributeId implements AttributeIdInterface
 {
+    use DomainIdTrait;
 }
