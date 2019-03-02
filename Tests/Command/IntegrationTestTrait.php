@@ -8,7 +8,7 @@ use MsgPhp\Domain\Factory\DomainObjectFactory as BaseDomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\DomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\Test\EntityManagerTestTrait;
 use MsgPhp\Domain\Infra\Messenger\Test\MessageBusTestTrait;
-use MsgPhp\Eav\{AttributeId, AttributeIdInterface};
+use MsgPhp\Eav\{ScalarAttributeId, AttributeIdInterface};
 use MsgPhp\Eav\{Command, Entity};
 use MsgPhp\Eav\Infra\Doctrine\{Repository, Type};
 use MsgPhp\Eav\Tests\Fixtures\Entities;
@@ -57,7 +57,7 @@ trait IntegrationTestTrait
 
     protected static function getEntityIdTypes(): iterable
     {
-        yield Type\AttributeIdType::class => AttributeId::class;
+        yield Type\AttributeIdType::class => ScalarAttributeId::class;
     }
 
     protected function setUp(): void
@@ -74,7 +74,7 @@ trait IntegrationTestTrait
     private static function createDomainFactory(): DomainObjectFactory
     {
         return new DomainObjectFactory(new BaseDomainObjectFactory([
-            AttributeIdInterface::class => AttributeId::class,
+            AttributeIdInterface::class => ScalarAttributeId::class,
             Entity\Attribute::class => Entities\TestAttribute::class,
         ]), self::$em);
     }

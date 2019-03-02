@@ -9,7 +9,7 @@ use MsgPhp\Domain\DomainIdTrait;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-final class AttributeId implements AttributeIdInterface
+final class ScalarAttributeValueId implements AttributeValueIdInterface
 {
     use DomainIdTrait;
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Tests\Fixtures\Entities;
 
-use MsgPhp\Eav\{AttributeId, AttributeIdInterface};
+use MsgPhp\Eav\{ScalarAttributeId, AttributeIdInterface};
 use MsgPhp\Eav\Entity\Attribute;
 
 /**
@@ -22,7 +22,7 @@ class TestAttribute extends Attribute
 
     public function __construct(AttributeIdInterface $id = null)
     {
-        $this->id = $id ?? new AttributeId();
+        $this->id = $id ?? new ScalarAttributeId();
     }
 
     public function getId(): AttributeIdInterface
