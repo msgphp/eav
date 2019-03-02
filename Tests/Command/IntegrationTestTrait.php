@@ -33,6 +33,17 @@ trait IntegrationTestTrait
         self::destroyEm();
     }
 
+    protected function setUp(): void
+    {
+        self::prepareEm();
+    }
+
+    protected function tearDown(): void
+    {
+        self::cleanEm();
+        self::cleanBus();
+    }
+
     protected static function getMessageHandlers(): iterable
     {
         $factory = self::createDomainFactory();
@@ -61,17 +72,6 @@ trait IntegrationTestTrait
     protected static function getEntityIdTypes(): iterable
     {
         yield Type\AttributeIdType::class => ScalarAttributeId::class;
-    }
-
-    protected function setUp(): void
-    {
-        self::prepareEm();
-    }
-
-    protected function tearDown(): void
-    {
-        self::cleanEm();
-        self::cleanBus();
     }
 
     private static function createDomainFactory(): DomainObjectFactory

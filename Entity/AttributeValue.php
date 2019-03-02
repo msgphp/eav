@@ -57,19 +57,19 @@ abstract class AttributeValue
     /**
      * @param mixed $value
      */
-    public static function getChecksum($value): string
-    {
-        return md5(serialize([\gettype($value), static::prepareChecksumValue($value)]));
-    }
-
-    /**
-     * @param mixed $value
-     */
     public function __construct(Attribute $attribute, $value)
     {
         $this->attribute = $attribute;
 
         $this->changeValue($value);
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public static function getChecksum($value): string
+    {
+        return md5(serialize([\gettype($value), static::prepareChecksumValue($value)]));
     }
 
     abstract public function getId(): AttributeValueIdInterface;
