@@ -10,7 +10,7 @@ use MsgPhp\Eav\AttributeIdInterface;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-final class AttributeId implements AttributeIdInterface
+final class AttributeUuid implements AttributeIdInterface
 {
     use DomainIdTrait;
 }
