@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Tests\Command;
 
-use MsgPhp\Domain\Factory\DomainObjectFactory as BaseDomainObjectFactory;
+use MsgPhp\Domain\Factory\GenericDomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\DomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\Test\EntityManagerTestTrait;
 use MsgPhp\Domain\Infra\Messenger\Test\MessageBusTestTrait;
@@ -76,7 +76,7 @@ trait IntegrationTestTrait
 
     private static function createDomainFactory(): DomainObjectFactory
     {
-        return new DomainObjectFactory(new BaseDomainObjectFactory([
+        return new DomainObjectFactory(new GenericDomainObjectFactory([
             AttributeIdInterface::class => ScalarAttributeId::class,
             Entity\Attribute::class => Entities\TestAttribute::class,
         ]), self::$em);
