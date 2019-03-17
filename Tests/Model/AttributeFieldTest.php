@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Tests\Entity\Fields;
+namespace MsgPhp\Eav\Tests\Model;
 
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\Entity\Attribute;
-use MsgPhp\Eav\Entity\Fields\AttributeField;
+use MsgPhp\Eav\Model\AttributeField;
 use PHPUnit\Framework\TestCase;
 
 final class AttributeFieldTest extends TestCase

@@ -8,8 +8,7 @@ use MsgPhp\Domain\Infra\Doctrine\MappingConfig;
 use MsgPhp\Domain\Infra\Doctrine\ObjectMappingProviderInterface;
 use MsgPhp\Eav\Entity\Attribute;
 use MsgPhp\Eav\Entity\AttributeValue;
-use MsgPhp\Eav\Entity\Features;
-use MsgPhp\Eav\Entity\Fields;
+use MsgPhp\Eav\Model;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
@@ -20,7 +19,7 @@ final class ObjectMappings implements ObjectMappingProviderInterface
 {
     public static function provideObjectMappings(MappingConfig $config): iterable
     {
-        yield Features\EntityAttributeValue::class => [
+        yield Model\EntityAttributeValue::class => [
             'attributeValue' => [
                 'type' => self::TYPE_ONE_TO_ONE,
                 'targetEntity' => AttributeValue::class,
@@ -30,7 +29,7 @@ final class ObjectMappings implements ObjectMappingProviderInterface
                 ],
             ],
         ];
-        yield Fields\AttributeField::class => [
+        yield Model\AttributeField::class => [
             'attribute' => [
                 'type' => self::TYPE_MANY_TO_ONE,
                 'targetEntity' => Attribute::class,

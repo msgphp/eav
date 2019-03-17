@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Tests\Entity\Features;
+namespace MsgPhp\Eav\Tests\Model;
 
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\AttributeValueIdInterface;
 use MsgPhp\Eav\Entity\Attribute;
 use MsgPhp\Eav\Entity\AttributeValue;
-use MsgPhp\Eav\Entity\Features\EntityAttributeValue;
+use MsgPhp\Eav\Model\EntityAttributeValue;
 use PHPUnit\Framework\TestCase;
 
 final class EntityAttributeValueTest extends TestCase

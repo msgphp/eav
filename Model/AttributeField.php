@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Entity\Fields;
+namespace MsgPhp\Eav\Model;
 
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\Entity\Attribute;
