@@ -6,8 +6,8 @@ namespace MsgPhp\Eav\Infra\Doctrine;
 
 use MsgPhp\Domain\Infra\Doctrine\MappingConfig;
 use MsgPhp\Domain\Infra\Doctrine\ObjectMappingProviderInterface;
-use MsgPhp\Eav\Entity\Attribute;
-use MsgPhp\Eav\Entity\AttributeValue;
+use MsgPhp\Eav\Attribute;
+use MsgPhp\Eav\AttributeValue;
 use MsgPhp\Eav\Model;
 
 /**

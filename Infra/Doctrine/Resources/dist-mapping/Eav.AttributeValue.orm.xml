@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="MsgPhp\Eav\Entity\AttributeValue">
+    <mapped-superclass name="MsgPhp\Eav\AttributeValue">
         <field name="boolValue" type="boolean" nullable="true" />
         <field name="intValue" type="integer" nullable="true" />
         <field name="floatValue" type="float" nullable="true" />
@@ -11,7 +11,7 @@
         <field name="dateTimeValue" type="datetime" nullable="true" />
         <field name="checksum" />
 
-        <many-to-one field="attribute" target-entity="MsgPhp\Eav\Entity\Attribute">
+        <many-to-one field="attribute" target-entity="MsgPhp\Eav\Attribute">
             <join-column nullable="false" on-delete="CASCADE" />
         </many-to-one>
     </mapped-superclass>

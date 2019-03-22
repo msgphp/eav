@@ -8,9 +8,9 @@ use MsgPhp\Domain\Factory\GenericDomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\DomainObjectFactory;
 use MsgPhp\Domain\Infra\Doctrine\Test\EntityManagerTestTrait;
 use MsgPhp\Domain\Infra\Messenger\Test\MessageBusTestTrait;
+use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\Command;
-use MsgPhp\Eav\Entity;
 use MsgPhp\Eav\Infra\Doctrine\Repository;
 use MsgPhp\Eav\Infra\Doctrine\Type;
 use MsgPhp\Eav\ScalarAttributeId;
@@ -65,7 +65,7 @@ trait IntegrationTestTrait
             'MsgPhp\\Eav\\Tests\\Fixtures\\Entities\\' => \dirname(__DIR__).'/Fixtures/Entities',
         ];
         yield 'xml' => [
-            'MsgPhp\\Eav\\Entity\\' => self::createEntityDistMapping(\dirname(__DIR__, 2).'/Infra/Doctrine/Resources/dist-mapping'),
+            'MsgPhp\\Eav\\' => self::createEntityDistMapping(\dirname(__DIR__, 2).'/Infra/Doctrine/Resources/dist-mapping'),
         ];
     }
 
@@ -78,7 +78,7 @@ trait IntegrationTestTrait
     {
         return new DomainObjectFactory(new GenericDomainObjectFactory([
             AttributeIdInterface::class => ScalarAttributeId::class,
-            Entity\Attribute::class => Entities\TestAttribute::class,
+            Attribute::class => Entities\TestAttribute::class,
         ]), self::$em);
     }
 

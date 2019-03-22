@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Tests\Model;
 
 use MsgPhp\Eav\AttributeIdInterface;
-use MsgPhp\Eav\Entity\Attribute;
+use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\Model\AttributeField;
 use PHPUnit\Framework\TestCase;
 

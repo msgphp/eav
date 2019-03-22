@@ -8,7 +8,7 @@ use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
 use MsgPhp\Domain\Infra\Doctrine\DomainEntityRepositoryTrait;
 use MsgPhp\Eav\AttributeIdInterface;
-use MsgPhp\Eav\Entity\AttributeValue;
+use MsgPhp\Eav\AttributeValue;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>

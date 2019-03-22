@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Event;
 
-use MsgPhp\Eav\Entity\Attribute;
+use MsgPhp\Eav\Attribute;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>

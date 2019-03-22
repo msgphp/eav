@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Tests\Model;
 
+use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\AttributeValue;
 use MsgPhp\Eav\AttributeValueIdInterface;
-use MsgPhp\Eav\Entity\Attribute;
-use MsgPhp\Eav\Entity\AttributeValue;
 use MsgPhp\Eav\Model\EntityAttributeValue;
 use PHPUnit\Framework\TestCase;
 

@@ -6,8 +6,8 @@ namespace MsgPhp\Eav\Infra\Doctrine\Repository;
 
 use MsgPhp\Domain\DomainCollectionInterface;
 use MsgPhp\Domain\Infra\Doctrine\DomainEntityRepositoryTrait;
+use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\AttributeIdInterface;
-use MsgPhp\Eav\Entity\Attribute;
 use MsgPhp\Eav\Repository\AttributeRepositoryInterface;
 
 /**

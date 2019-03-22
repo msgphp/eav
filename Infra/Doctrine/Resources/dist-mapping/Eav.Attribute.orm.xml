@@ -3,6 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="MsgPhp\Eav\Entity\Attribute" />
+    <mapped-superclass name="MsgPhp\Eav\Attribute" />
 
 </doctrine-mapping>
