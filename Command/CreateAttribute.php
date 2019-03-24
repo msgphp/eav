@@ -7,7 +7,7 @@ namespace MsgPhp\Eav\Command;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class CreateAttributeCommand
+class CreateAttribute
 {
     /**
      * @var array

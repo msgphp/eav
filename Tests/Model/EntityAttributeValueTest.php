@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Tests\Model;
 
 use MsgPhp\Eav\Attribute;
-use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\AttributeValue;
-use MsgPhp\Eav\AttributeValueIdInterface;
+use MsgPhp\Eav\AttributeValueId;
 use MsgPhp\Eav\Model\EntityAttributeValue;
 use PHPUnit\Framework\TestCase;
 
@@ -18,7 +18,7 @@ final class EntityAttributeValueTest extends TestCase
         $attribute = $this->createMock(Attribute::class);
         $attribute->expects(self::once())
             ->method('getId')
-            ->willReturn($attributeId = $this->createMock(AttributeIdInterface::class))
+            ->willReturn($attributeId = $this->createMock(AttributeId::class))
         ;
         /** @var AttributeValue $attributeValue */
         $object = $this->getObject('value', $attribute, $attributeValue);
@@ -37,7 +37,7 @@ final class EntityAttributeValueTest extends TestCase
      */
     private function getObject($value, $attribute, &$attributeValue = null)
     {
-        $attributeValueId = $this->createMock(AttributeValueIdInterface::class);
+        $attributeValueId = $this->createMock(AttributeValueId::class);
         $attributeValue = new class($attributeValueId, $attribute, $value) extends AttributeValue {
             private $id;
 
@@ -48,7 +48,7 @@ final class EntityAttributeValueTest extends TestCase
                 $this->id = $id;
             }
 
-            public function getId(): AttributeValueIdInterface
+            public function getId(): AttributeValueId
             {
                 return $this->id;
             }

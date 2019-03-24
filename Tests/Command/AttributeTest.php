@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Tests\Command;
 
-use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\Command;
 use MsgPhp\Eav\Event;
 use PHPUnit\Framework\TestCase;
@@ -15,12 +15,12 @@ final class AttributeTest extends TestCase
 
     public function testCreate(): void
     {
-        self::$bus->dispatch(new Command\CreateAttributeCommand([]));
+        self::$bus->dispatch(new Command\CreateAttribute([]));
 
-        self::assertMessageIsDispatchedOnce(Event\AttributeCreatedEvent::class, function (Event\AttributeCreatedEvent $event): void {
+        self::assertMessageIsDispatchedOnce(Event\AttributeCreated::class, function (Event\AttributeCreated $event): void {
             self::assertFalse($event->attribute->getId()->isEmpty());
             self::assertArrayHasKey('id', $event->context);
-            self::assertInstanceOf(AttributeIdInterface::class, $event->context['id']);
+            self::assertInstanceOf(AttributeId::class, $event->context['id']);
             self::assertTrue($event->context['id']->isEmpty());
         });
 
@@ -29,11 +29,11 @@ final class AttributeTest extends TestCase
 
     public function testCreateWithId(): void
     {
-        self::$bus->dispatch(new Command\CreateAttributeCommand([
-            'id' => $id = self::createDomainFactory()->create(AttributeIdInterface::class),
+        self::$bus->dispatch(new Command\CreateAttribute([
+            'id' => $id = self::createDomainFactory()->create(AttributeId::class),
         ]));
 
-        self::assertMessageIsDispatchedOnce(Event\AttributeCreatedEvent::class, function (Event\AttributeCreatedEvent $event) use ($id): void {
+        self::assertMessageIsDispatchedOnce(Event\AttributeCreated::class, function (Event\AttributeCreated $event) use ($id): void {
             self::assertFalse($event->attribute->getId()->isEmpty());
             self::assertArrayHasKey('id', $event->context);
             self::assertSame($id, $event->context['id']);
@@ -42,24 +42,24 @@ final class AttributeTest extends TestCase
 
     public function testDelete(): void
     {
-        self::$bus->dispatch(new Command\CreateAttributeCommand([]));
+        self::$bus->dispatch(new Command\CreateAttribute([]));
 
         self::assertCount(1, self::createAttributeRepository()->findAll());
 
-        /** @var Event\AttributeCreatedEvent $event */
-        $event = self::$dispatchedMessages[Event\AttributeCreatedEvent::class][0];
+        /** @var Event\AttributeCreated $event */
+        $event = self::$dispatchedMessages[Event\AttributeCreated::class][0];
 
-        self::$bus->dispatch(new Command\DeleteAttributeCommand($event->attribute->getId()));
+        self::$bus->dispatch(new Command\DeleteAttribute($event->attribute->getId()));
 
-        self::assertMessageIsDispatchedOnce(Event\AttributeDeletedEvent::class);
+        self::assertMessageIsDispatchedOnce(Event\AttributeDeleted::class);
         self::assertCount(0, self::createAttributeRepository()->findAll());
     }
 
     public function testDeleteUnknownId(): void
     {
-        self::$bus->dispatch(new Command\DeleteAttributeCommand(self::createDomainFactory()->create(AttributeIdInterface::class)));
+        self::$bus->dispatch(new Command\DeleteAttribute(self::createDomainFactory()->create(AttributeId::class)));
 
-        self::assertMessageIsNotDispatched(Event\AttributeDeletedEvent::class);
+        self::assertMessageIsNotDispatched(Event\AttributeDeleted::class);
         self::addToAssertionCount(1);
     }
 }

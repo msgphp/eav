@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav;
 
-use MsgPhp\Domain\DomainIdInterface;
+use MsgPhp\Domain\DomainId;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-interface AttributeIdInterface extends DomainIdInterface
+interface AttributeValueId extends DomainId
 {
 }

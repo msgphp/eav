@@ -9,21 +9,15 @@ use MsgPhp\Eav\Attribute;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class AttributeCreatedEvent
+class AttributeDeleted
 {
     /**
      * @var Attribute
      */
     public $attribute;
 
-    /**
-     * @var array
-     */
-    public $context;
-
-    final public function __construct(Attribute $attribute, array $context)
+    final public function __construct(Attribute $attribute)
     {
         $this->attribute = $attribute;
-        $this->context = $context;
     }
 }

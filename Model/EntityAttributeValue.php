@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Model;
 
 use MsgPhp\Eav\Attribute;
-use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\AttributeValue;
-use MsgPhp\Eav\AttributeValueIdInterface;
+use MsgPhp\Eav\AttributeValueId;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
@@ -19,7 +19,7 @@ trait EntityAttributeValue
      */
     private $attributeValue;
 
-    public function getId(): AttributeValueIdInterface
+    public function getId(): AttributeValueId
     {
         return $this->attributeValue->getId();
     }
@@ -29,7 +29,7 @@ trait EntityAttributeValue
         return $this->attributeValue->getAttribute();
     }
 
-    public function getAttributeId(): AttributeIdInterface
+    public function getAttributeId(): AttributeId
     {
         return $this->attributeValue->getAttributeId();
     }

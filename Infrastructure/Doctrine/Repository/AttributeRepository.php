@@ -4,33 +4,33 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Infrastructure\Doctrine\Repository;
 
-use MsgPhp\Domain\DomainCollectionInterface;
+use MsgPhp\Domain\DomainCollection;
 use MsgPhp\Domain\Infrastructure\Doctrine\DomainEntityRepositoryTrait;
 use MsgPhp\Eav\Attribute;
-use MsgPhp\Eav\AttributeIdInterface;
-use MsgPhp\Eav\Repository\AttributeRepositoryInterface;
+use MsgPhp\Eav\AttributeId;
+use MsgPhp\Eav\Repository\AttributeRepository as BaseAttributeRepository;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-final class AttributeRepository implements AttributeRepositoryInterface
+final class AttributeRepository implements BaseAttributeRepository
 {
     use DomainEntityRepositoryTrait;
 
     /**
-     * @return DomainCollectionInterface|Attribute[]
+     * @return DomainCollection|Attribute[]
      */
-    public function findAll(int $offset = 0, int $limit = 0): DomainCollectionInterface
+    public function findAll(int $offset = 0, int $limit = 0): DomainCollection
     {
         return $this->doFindAll($offset, $limit);
     }
 
-    public function find(AttributeIdInterface $id): Attribute
+    public function find(AttributeId $id): Attribute
     {
         return $this->doFind($id);
     }
 
-    public function exists(AttributeIdInterface $id): bool
+    public function exists(AttributeId $id): bool
     {
         return $this->doExists($id);
     }

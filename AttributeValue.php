@@ -71,7 +71,7 @@ abstract class AttributeValue
         return md5(serialize([\gettype($value), static::prepareChecksumValue($value)]));
     }
 
-    abstract public function getId(): AttributeValueIdInterface;
+    abstract public function getId(): AttributeValueId;
 
     /**
      * @return mixed

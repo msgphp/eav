@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Tests\Model;
 
-use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\Model\AttributeField;
 use PHPUnit\Framework\TestCase;
@@ -16,7 +16,7 @@ final class AttributeFieldTest extends TestCase
         $value = $this->createMock(Attribute::class);
         $value->expects(self::any())
             ->method('getId')
-            ->willReturn($this->createMock(AttributeIdInterface::class))
+            ->willReturn($this->createMock(AttributeId::class))
         ;
 
         $object = $this->getObject($value);

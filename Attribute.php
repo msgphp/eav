@@ -9,5 +9,5 @@ namespace MsgPhp\Eav;
  */
 abstract class Attribute
 {
-    abstract public function getId(): AttributeIdInterface;
+    abstract public function getId(): AttributeId;
 }

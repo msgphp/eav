@@ -7,7 +7,7 @@ namespace MsgPhp\Eav\Infrastructure\Doctrine\Repository;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
 use MsgPhp\Domain\Infrastructure\Doctrine\DomainEntityRepositoryTrait;
-use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\AttributeValue;
 
 /**
@@ -35,7 +35,7 @@ trait EntityAttributeValueRepositoryTrait
     /**
      * @param mixed $value
      */
-    private function addAttributeCriteria(QueryBuilder $qb, AttributeIdInterface $attributeId, $value = null): void
+    private function addAttributeCriteria(QueryBuilder $qb, AttributeId $attributeId, $value = null): void
     {
         $field = $this->getAlias().'.'.$this->attributeValueField;
         $targetClass = $this->em->getClassMetadata($this->class)->getAssociationMapping($this->attributeValueField)['targetEntity'];

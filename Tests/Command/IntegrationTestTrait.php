@@ -9,7 +9,7 @@ use MsgPhp\Domain\Infrastructure\Doctrine\DomainObjectFactory;
 use MsgPhp\Domain\Infrastructure\Doctrine\Test\EntityManagerTestTrait;
 use MsgPhp\Domain\Infrastructure\Messenger\Test\MessageBusTestTrait;
 use MsgPhp\Eav\Attribute;
-use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\Command;
 use MsgPhp\Eav\Infrastructure\Doctrine\Repository;
 use MsgPhp\Eav\Infrastructure\Doctrine\Type;
@@ -50,8 +50,8 @@ trait IntegrationTestTrait
         $bus = self::createDomainMessageBus();
         $repository = self::createAttributeRepository();
 
-        yield Command\CreateAttributeCommand::class => new Command\Handler\CreateAttributeHandler($factory, $bus, $repository);
-        yield Command\DeleteAttributeCommand::class => new Command\Handler\DeleteAttributeHandler($factory, $bus, $repository);
+        yield Command\CreateAttribute::class => new Command\Handler\CreateAttributeHandler($factory, $bus, $repository);
+        yield Command\DeleteAttribute::class => new Command\Handler\DeleteAttributeHandler($factory, $bus, $repository);
     }
 
     protected static function createSchema(): bool
@@ -77,7 +77,7 @@ trait IntegrationTestTrait
     private static function createDomainFactory(): DomainObjectFactory
     {
         return new DomainObjectFactory(new GenericDomainObjectFactory([
-            AttributeIdInterface::class => ScalarAttributeId::class,
+            AttributeId::class => ScalarAttributeId::class,
             Attribute::class => Entities\TestAttribute::class,
         ]), self::$em);
     }

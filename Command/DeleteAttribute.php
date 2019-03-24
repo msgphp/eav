@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Command;
 
-use MsgPhp\Eav\AttributeIdInterface;
+use MsgPhp\Eav\AttributeId;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class DeleteAttributeCommand
+class DeleteAttribute
 {
     /**
-     * @var AttributeIdInterface
+     * @var AttributeId
      */
     public $attributeId;
 
-    final public function __construct(AttributeIdInterface $attributeId)
+    final public function __construct(AttributeId $attributeId)
     {
         $this->attributeId = $attributeId;
     }

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Command\Handler;
 
-use MsgPhp\Domain\Factory\DomainObjectFactoryInterface;
-use MsgPhp\Domain\Message\DomainMessageBusInterface;
+use MsgPhp\Domain\Factory\DomainObjectFactory;
+use MsgPhp\Domain\Message\DomainMessageBus;
 use MsgPhp\Domain\Message\MessageDispatchingTrait;
 use MsgPhp\Eav\Attribute;
-use MsgPhp\Eav\AttributeIdInterface;
-use MsgPhp\Eav\Command\CreateAttributeCommand;
-use MsgPhp\Eav\Event\AttributeCreatedEvent;
-use MsgPhp\Eav\Repository\AttributeRepositoryInterface;
+use MsgPhp\Eav\AttributeId;
+use MsgPhp\Eav\Command\CreateAttribute;
+use MsgPhp\Eav\Event\AttributeCreated;
+use MsgPhp\Eav\Repository\AttributeRepository;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
@@ -21,24 +21,24 @@ final class CreateAttributeHandler
     use MessageDispatchingTrait;
 
     /**
-     * @var AttributeRepositoryInterface
+     * @var AttributeRepository
      */
     private $repository;
 
-    public function __construct(DomainObjectFactoryInterface $factory, DomainMessageBusInterface $bus, AttributeRepositoryInterface $repository)
+    public function __construct(DomainObjectFactory $factory, DomainMessageBus $bus, AttributeRepository $repository)
     {
         $this->factory = $factory;
         $this->bus = $bus;
         $this->repository = $repository;
     }
 
-    public function __invoke(CreateAttributeCommand $command): void
+    public function __invoke(CreateAttribute $command): void
     {
         $context = $command->context;
-        $context['id'] = $context['id'] ?? $this->factory->create(AttributeIdInterface::class);
+        $context['id'] = $context['id'] ?? $this->factory->create(AttributeId::class);
         $attribute = $this->factory->create(Attribute::class, $context);
 
         $this->repository->save($attribute);
-        $this->dispatch(AttributeCreatedEvent::class, compact('attribute', 'context'));
+        $this->dispatch(AttributeCreated::class, compact('attribute', 'context'));
     }
 }

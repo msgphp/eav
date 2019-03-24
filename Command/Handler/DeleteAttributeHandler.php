@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Command\Handler;
 
 use MsgPhp\Domain\Exception\EntityNotFoundException;
-use MsgPhp\Domain\Factory\DomainObjectFactoryInterface;
-use MsgPhp\Domain\Message\DomainMessageBusInterface;
+use MsgPhp\Domain\Factory\DomainObjectFactory;
+use MsgPhp\Domain\Message\DomainMessageBus;
 use MsgPhp\Domain\Message\MessageDispatchingTrait;
-use MsgPhp\Eav\Command\DeleteAttributeCommand;
-use MsgPhp\Eav\Event\AttributeDeletedEvent;
-use MsgPhp\Eav\Repository\AttributeRepositoryInterface;
+use MsgPhp\Eav\Command\DeleteAttribute;
+use MsgPhp\Eav\Event\AttributeDeleted;
+use MsgPhp\Eav\Repository\AttributeRepository;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
@@ -20,18 +20,18 @@ final class DeleteAttributeHandler
     use MessageDispatchingTrait;
 
     /**
-     * @var AttributeRepositoryInterface
+     * @var AttributeRepository
      */
     private $repository;
 
-    public function __construct(DomainObjectFactoryInterface $factory, DomainMessageBusInterface $bus, AttributeRepositoryInterface $repository)
+    public function __construct(DomainObjectFactory $factory, DomainMessageBus $bus, AttributeRepository $repository)
     {
         $this->factory = $factory;
         $this->bus = $bus;
         $this->repository = $repository;
     }
 
-    public function __invoke(DeleteAttributeCommand $command): void
+    public function __invoke(DeleteAttribute $command): void
     {
         try {
             $attribute = $this->repository->find($command->attributeId);
@@ -40,6 +40,6 @@ final class DeleteAttributeHandler
         }
 
         $this->repository->delete($attribute);
-        $this->dispatch(AttributeDeletedEvent::class, compact('attribute'));
+        $this->dispatch(AttributeDeleted::class, compact('attribute'));
     }
 }
