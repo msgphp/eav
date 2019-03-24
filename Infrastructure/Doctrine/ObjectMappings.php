@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Infra\Doctrine;
+namespace MsgPhp\Eav\Infrastructure\Doctrine;
 
-use MsgPhp\Domain\Infra\Doctrine\MappingConfig;
-use MsgPhp\Domain\Infra\Doctrine\ObjectMappingProviderInterface;
+use MsgPhp\Domain\Infrastructure\Doctrine\MappingConfig;
+use MsgPhp\Domain\Infrastructure\Doctrine\ObjectMappingProviderInterface;
 use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\AttributeValue;
 use MsgPhp\Eav\Model;

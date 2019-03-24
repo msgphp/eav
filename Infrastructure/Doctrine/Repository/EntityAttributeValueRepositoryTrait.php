@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Infra\Doctrine\Repository;
+namespace MsgPhp\Eav\Infrastructure\Doctrine\Repository;
 
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
-use MsgPhp\Domain\Infra\Doctrine\DomainEntityRepositoryTrait;
+use MsgPhp\Domain\Infrastructure\Doctrine\DomainEntityRepositoryTrait;
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\AttributeValue;
 

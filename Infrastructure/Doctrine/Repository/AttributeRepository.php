@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Infra\Doctrine\Repository;
+namespace MsgPhp\Eav\Infrastructure\Doctrine\Repository;
 
 use MsgPhp\Domain\DomainCollectionInterface;
-use MsgPhp\Domain\Infra\Doctrine\DomainEntityRepositoryTrait;
+use MsgPhp\Domain\Infrastructure\Doctrine\DomainEntityRepositoryTrait;
 use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\Repository\AttributeRepositoryInterface;

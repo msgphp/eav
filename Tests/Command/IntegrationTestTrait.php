@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Tests\Command;
 
 use MsgPhp\Domain\Factory\GenericDomainObjectFactory;
-use MsgPhp\Domain\Infra\Doctrine\DomainObjectFactory;
-use MsgPhp\Domain\Infra\Doctrine\Test\EntityManagerTestTrait;
-use MsgPhp\Domain\Infra\Messenger\Test\MessageBusTestTrait;
+use MsgPhp\Domain\Infrastructure\Doctrine\DomainObjectFactory;
+use MsgPhp\Domain\Infrastructure\Doctrine\Test\EntityManagerTestTrait;
+use MsgPhp\Domain\Infrastructure\Messenger\Test\MessageBusTestTrait;
 use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\AttributeIdInterface;
 use MsgPhp\Eav\Command;
-use MsgPhp\Eav\Infra\Doctrine\Repository;
-use MsgPhp\Eav\Infra\Doctrine\Type;
+use MsgPhp\Eav\Infrastructure\Doctrine\Repository;
+use MsgPhp\Eav\Infrastructure\Doctrine\Type;
 use MsgPhp\Eav\ScalarAttributeId;
 use MsgPhp\Eav\Tests\Fixtures\Entities;
 
@@ -65,7 +65,7 @@ trait IntegrationTestTrait
             'MsgPhp\\Eav\\Tests\\Fixtures\\Entities\\' => \dirname(__DIR__).'/Fixtures/Entities',
         ];
         yield 'xml' => [
-            'MsgPhp\\Eav\\' => self::createEntityDistMapping(\dirname(__DIR__, 2).'/Infra/Doctrine/Resources/dist-mapping'),
+            'MsgPhp\\Eav\\' => self::createEntityDistMapping(\dirname(__DIR__, 2).'/Infrastructure/Doctrine/Resources/dist-mapping'),
         ];
     }
 
