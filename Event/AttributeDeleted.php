@@ -16,7 +16,7 @@ class AttributeDeleted
      */
     public $attribute;
 
-    final public function __construct(Attribute $attribute)
+    public function __construct(Attribute $attribute)
     {
         $this->attribute = $attribute;
     }

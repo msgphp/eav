@@ -21,7 +21,7 @@ class AttributeCreated
      */
     public $context;
 
-    final public function __construct(Attribute $attribute, array $context)
+    public function __construct(Attribute $attribute, array $context)
     {
         $this->attribute = $attribute;
         $this->context = $context;

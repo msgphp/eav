@@ -16,7 +16,7 @@ class DeleteAttribute
      */
     public $attributeId;
 
-    final public function __construct(AttributeId $attributeId)
+    public function __construct(AttributeId $attributeId)
     {
         $this->attributeId = $attributeId;
     }

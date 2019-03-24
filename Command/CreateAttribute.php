@@ -14,7 +14,7 @@ class CreateAttribute
      */
     public $context;
 
-    final public function __construct(array $context)
+    public function __construct(array $context)
     {
         $this->context = $context;
     }
