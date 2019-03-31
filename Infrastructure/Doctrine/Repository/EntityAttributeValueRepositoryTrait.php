@@ -41,7 +41,7 @@ trait EntityAttributeValueRepositoryTrait
         $targetClass = $this->em->getClassMetadata($this->class)->getAssociationMapping($this->attributeValueField)['targetEntity'];
 
         if (!is_subclass_of($targetClass, AttributeValue::class)) {
-            throw new \LogicException(sprintf('The field "%s" is expected to be an association mapping for "%s", got "%s".', $this->class.'.'.$this->attributeValueField, AttributeValue::class, $targetClass));
+            throw new \LogicException('Field "'.$this->class.'.'.$this->attributeValueField.'" is expected to be an association mapping for "'.AttributeValue::class.'", got "'.$targetClass.'".');
         }
 
         if (3 === \func_num_args()) {

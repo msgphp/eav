@@ -140,7 +140,7 @@ abstract class AttributeValue
         } elseif ($value instanceof \DateTimeInterface) {
             $this->dateTimeValue = $value;
         } else {
-            throw new \LogicException(sprintf('Unsupported attribute value type "%s".', \gettype($value)));
+            throw new \LogicException('Unsupported attribute value type "'.\gettype($value).'".');
         }
     }
 
