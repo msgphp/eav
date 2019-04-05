@@ -17,7 +17,7 @@ final class AttributeTest extends TestCase
     {
         self::$bus->dispatch(new Command\CreateAttribute([]));
 
-        self::assertMessageIsDispatchedOnce(Event\AttributeCreated::class, function (Event\AttributeCreated $event): void {
+        self::assertMessageIsDispatchedOnce(Event\AttributeCreated::class, static function (Event\AttributeCreated $event): void {
             self::assertFalse($event->attribute->getId()->isEmpty());
             self::assertArrayHasKey('id', $event->context);
             self::assertInstanceOf(AttributeId::class, $event->context['id']);
@@ -33,7 +33,7 @@ final class AttributeTest extends TestCase
             'id' => $id = self::createDomainFactory()->create(AttributeId::class),
         ]));
 
-        self::assertMessageIsDispatchedOnce(Event\AttributeCreated::class, function (Event\AttributeCreated $event) use ($id): void {
+        self::assertMessageIsDispatchedOnce(Event\AttributeCreated::class, static function (Event\AttributeCreated $event) use ($id): void {
             self::assertFalse($event->attribute->getId()->isEmpty());
             self::assertArrayHasKey('id', $event->context);
             self::assertSame($id, $event->context['id']);

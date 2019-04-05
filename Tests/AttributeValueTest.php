@@ -125,7 +125,7 @@ final class AttributeValueTest extends TestCase
         yield [[123], false];
         yield [new \stdClass(), true];
         yield [new \stdClass(), false];
-        yield [function (): string { return ''; }, false];
+        yield [static function (): string { return ''; }, false];
     }
 
     private function createEntity($id, $attribute, $value): AttributeValue
