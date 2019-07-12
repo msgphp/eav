@@ -13,44 +13,21 @@ abstract class AttributeValue
 {
     use AttributeField;
 
-    /**
-     * @var bool|null
-     */
+    /** @var bool|null */
     private $boolValue;
-
-    /**
-     * @var int|null
-     */
+    /** @var int|null */
     private $intValue;
-
-    /**
-     * @var float|null
-     */
+    /** @var float|null */
     private $floatValue;
-
-    /**
-     * @var string|null
-     */
+    /** @var string|null */
     private $stringValue;
-
-    /**
-     * @var \DateTimeInterface|null
-     */
+    /** @var \DateTimeInterface|null */
     private $dateTimeValue;
-
-    /**
-     * @var string
-     */
+    /** @var string */
     private $checksum;
-
-    /**
-     * @var bool
-     */
+    /** @var bool */
     private $isNull;
-
-    /**
-     * @var mixed
-     */
+    /** @var mixed */
     private $value;
 
     /**

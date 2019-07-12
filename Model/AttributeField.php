@@ -12,9 +12,7 @@ use MsgPhp\Eav\AttributeId;
  */
 trait AttributeField
 {
-    /**
-     * @var Attribute
-     */
+    /** @var Attribute */
     private $attribute;
 
     public function getAttribute(): Attribute

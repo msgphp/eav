@@ -14,9 +14,7 @@ use MsgPhp\Eav\AttributeValueId;
  */
 trait EntityAttributeValue
 {
-    /**
-     * @var AttributeValue
-     */
+    /** @var AttributeValue */
     private $attributeValue;
 
     public function getId(): AttributeValueId

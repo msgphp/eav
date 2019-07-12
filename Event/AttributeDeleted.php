@@ -11,9 +11,6 @@ use MsgPhp\Eav\Attribute;
  */
 class AttributeDeleted
 {
-    /**
-     * @var Attribute
-     */
     public $attribute;
 
     public function __construct(Attribute $attribute)

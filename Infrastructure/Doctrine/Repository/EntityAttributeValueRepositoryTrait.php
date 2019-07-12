@@ -17,19 +17,11 @@ trait EntityAttributeValueRepositoryTrait
 {
     use DomainEntityRepositoryTrait;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $attributeAlias = 'attribute';
-
-    /**
-     * @var string
-     */
+    /** @var string */
     private $attributeValueAlias = 'attribute_value';
-
-    /**
-     * @var string
-     */
+    /** @var string */
     private $attributeValueField = 'attributeValue';
 
     /**

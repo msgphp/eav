@@ -11,14 +11,7 @@ use MsgPhp\Eav\Attribute;
  */
 class AttributeCreated
 {
-    /**
-     * @var Attribute
-     */
     public $attribute;
-
-    /**
-     * @var array
-     */
     public $context;
 
     public function __construct(Attribute $attribute, array $context)
