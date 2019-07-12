@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Tests\Model;
 
-use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\Attribute;
+use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\Model\AttributeField;
 use PHPUnit\Framework\TestCase;
 
