@@ -68,7 +68,7 @@ abstract class AttributeValue
      */
     public static function getChecksum($value): string
     {
-        return md5(serialize([\gettype($value), static::prepareChecksumValue($value)]));
+        return md5(serialize([\is_object($value) ? \get_class($value) : \gettype($value), static::getIdentityValue($value)]));
     }
 
     abstract public function getId(): AttributeValueId;
@@ -114,7 +114,7 @@ abstract class AttributeValue
      *
      * @return mixed
      */
-    protected static function prepareChecksumValue($value)
+    protected static function getIdentityValue($value)
     {
         return $value;
     }
