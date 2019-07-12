@@ -8,6 +8,7 @@ use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\AttributeValue;
 use MsgPhp\Eav\AttributeValueId;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 final class AttributeValueTest extends TestCase
@@ -68,6 +69,7 @@ final class AttributeValueTest extends TestCase
      */
     public function testLazyGetValue($value, string $type): void
     {
+        /** @var AttributeValue&MockObject $attributeValue */
         $attributeValue = $this->getMockBuilder(AttributeValue::class)
             ->disableOriginalConstructor()
             ->enableProxyingToOriginalMethods()
