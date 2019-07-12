@@ -25,10 +25,7 @@ final class AttributeFieldTest extends TestCase
         self::assertSame($value->getId(), $object->getAttributeId());
     }
 
-    /**
-     * @return object
-     */
-    private function getObject($value)
+    private function getObject($value): object
     {
         return new class($value) {
             use AttributeField;
