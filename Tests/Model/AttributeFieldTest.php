@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class AttributeFieldTest extends TestCase
 {
-    public function testModel(): void
+    public function testField(): void
     {
         $model = new TestAttributeFieldModel($attribute = new TestAttribute());
 

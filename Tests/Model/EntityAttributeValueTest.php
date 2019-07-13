@@ -12,11 +12,9 @@ use PHPUnit\Framework\TestCase;
 
 final class EntityAttributeValueTest extends TestCase
 {
-    public function testModel(): void
+    public function testAttributeValue(): void
     {
-        $attribute = new TestAttribute();
-        $attributeValue = new TestAttributeValue($attribute, 'value');
-        $model = new TestEntityAttributeValueModel($attributeValue);
+        $model = new TestEntityAttributeValueModel($attributeValue = new TestAttributeValue(new TestAttribute(), 'value'));
 
         self::assertSame($attributeValue->getId(), $model->getId());
         self::assertSame($attributeValue->getValue(), $model->getValue());
