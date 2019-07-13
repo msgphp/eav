@@ -29,6 +29,9 @@ final class AttributeValueTest extends TestCase
 
     /**
      * @dataProvider provideAttributeValues
+     *
+     * @param mixed $initialValue
+     * @param mixed $newValue
      */
     public function testChangeValue($initialValue, $newValue): void
     {
@@ -66,6 +69,8 @@ final class AttributeValueTest extends TestCase
 
     /**
      * @dataProvider provideLazyAttributeValues
+     *
+     * @param mixed $value
      */
     public function testLazyGetValue($value, string $type): void
     {
@@ -105,6 +110,8 @@ final class AttributeValueTest extends TestCase
 
     /**
      * @dataProvider provideUnknownTypeValues
+     *
+     * @param mixed $value
      */
     public function testUnknownTypes($value, bool $initial): void
     {
