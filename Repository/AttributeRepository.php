@@ -14,7 +14,7 @@ use MsgPhp\Eav\AttributeId;
 interface AttributeRepository
 {
     /**
-     * @return DomainCollection<Attribute>
+     * @return DomainCollection<array-key, Attribute>
      */
     public function findAll(int $offset = 0, int $limit = 0): DomainCollection;
 
