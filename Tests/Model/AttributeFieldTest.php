@@ -5,35 +5,27 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Tests\Model;
 
 use MsgPhp\Eav\Attribute;
-use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\Model\AttributeField;
+use MsgPhp\Eav\Tests\Fixtures\Entities\TestAttribute;
 use PHPUnit\Framework\TestCase;
 
 final class AttributeFieldTest extends TestCase
 {
-    public function testField(): void
+    public function testModel(): void
     {
-        $value = $this->createMock(Attribute::class);
-        $value->expects(self::any())
-            ->method('getId')
-            ->willReturn($this->createMock(AttributeId::class))
-        ;
+        $model = new TestAttributeFieldModel($attribute = new TestAttribute());
 
-        $object = $this->getObject($value);
-
-        self::assertSame($value, $object->getAttribute());
-        self::assertSame($value->getId(), $object->getAttributeId());
+        self::assertSame($attribute, $model->getAttribute());
+        self::assertSame($attribute->getId(), $model->getAttributeId());
     }
+}
 
-    private function getObject($value): object
+class TestAttributeFieldModel
+{
+    use AttributeField;
+
+    public function __construct(Attribute $attribute)
     {
-        return new class($value) {
-            use AttributeField;
-
-            public function __construct($value)
-            {
-                $this->attribute = $value;
-            }
-        };
+        $this->attribute = $attribute;
     }
 }

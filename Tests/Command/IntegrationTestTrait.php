@@ -10,10 +10,13 @@ use MsgPhp\Domain\Infrastructure\Doctrine\Test\EntityManagerTestTrait;
 use MsgPhp\Domain\Infrastructure\Messenger\Test\MessageBusTestTrait;
 use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\AttributeId;
+use MsgPhp\Eav\AttributeValue;
+use MsgPhp\Eav\AttributeValueId;
 use MsgPhp\Eav\Command;
 use MsgPhp\Eav\Infrastructure\Doctrine\Repository;
 use MsgPhp\Eav\Infrastructure\Doctrine\Type;
 use MsgPhp\Eav\ScalarAttributeId;
+use MsgPhp\Eav\ScalarAttributeValueId;
 use MsgPhp\Eav\Tests\Fixtures\Entities;
 
 trait IntegrationTestTrait
@@ -72,13 +75,16 @@ trait IntegrationTestTrait
     protected static function getEntityIdTypes(): iterable
     {
         yield Type\AttributeIdType::class => ScalarAttributeId::class;
+        yield Type\AttributeValueIdType::class => ScalarAttributeValueId::class;
     }
 
     private static function createDomainFactory(): DomainObjectFactory
     {
         return new DomainObjectFactory(new GenericDomainObjectFactory([
             AttributeId::class => ScalarAttributeId::class,
+            AttributeValueId::class => ScalarAttributeValueId::class,
             Attribute::class => Entities\TestAttribute::class,
+            AttributeValue::class => Entities\TestAttributeValue::class,
         ]), self::$em);
     }
 
