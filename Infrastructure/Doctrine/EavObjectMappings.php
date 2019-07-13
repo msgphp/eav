@@ -15,7 +15,7 @@ use MsgPhp\Eav\Model;
  *
  * @internal
  */
-final class ObjectMappings implements ObjectMappingProvider
+final class EavObjectMappings implements ObjectMappingProvider
 {
     public static function provideObjectMappings(MappingConfig $config): iterable
     {
