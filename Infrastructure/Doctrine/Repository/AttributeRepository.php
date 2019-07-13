@@ -12,9 +12,13 @@ use MsgPhp\Eav\Repository\AttributeRepository as BaseAttributeRepository;
 
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
+ *
+ * @template T of Attribute
+ * @implements BaseAttributeRepository<T>
  */
 final class AttributeRepository implements BaseAttributeRepository
 {
+    /** @use DomainEntityRepositoryTrait<T> */
     use DomainEntityRepositoryTrait;
 
     public function findAll(int $offset = 0, int $limit = 0): DomainCollection
