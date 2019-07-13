@@ -17,9 +17,6 @@ final class AttributeRepository implements BaseAttributeRepository
 {
     use DomainEntityRepositoryTrait;
 
-    /**
-     * @return DomainCollection|Attribute[]
-     */
     public function findAll(int $offset = 0, int $limit = 0): DomainCollection
     {
         return $this->doFindAll($offset, $limit);
