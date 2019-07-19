@@ -24,29 +24,6 @@ trait IntegrationTestTrait
     use EntityManagerTestTrait;
     use MessageBusTestTrait;
 
-    public static function setUpBeforeClass(): void
-    {
-        self::initEm();
-        self::initBus();
-    }
-
-    public static function tearDownAfterClass(): void
-    {
-        self::destroyBus();
-        self::destroyEm();
-    }
-
-    protected function setUp(): void
-    {
-        self::prepareEm();
-    }
-
-    protected function tearDown(): void
-    {
-        self::cleanEm();
-        self::cleanBus();
-    }
-
     protected static function getMessageHandlers(): iterable
     {
         $factory = self::createDomainFactory();
