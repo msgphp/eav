@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Command\Handler;
 
+use MsgPhp\Domain\DomainMessageBus;
 use MsgPhp\Domain\Factory\DomainObjectFactory;
-use MsgPhp\Domain\Message\DomainMessageBus;
-use MsgPhp\Domain\Message\MessageDispatchingTrait;
 use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\Command\CreateAttribute;
@@ -18,9 +17,8 @@ use MsgPhp\Eav\Repository\AttributeRepository;
  */
 final class CreateAttributeHandler
 {
-    use MessageDispatchingTrait;
-
-    /** @var AttributeRepository */
+    private $factory;
+    private $bus;
     private $repository;
 
     public function __construct(DomainObjectFactory $factory, DomainMessageBus $bus, AttributeRepository $repository)
@@ -37,6 +35,6 @@ final class CreateAttributeHandler
         $attribute = $this->factory->create(Attribute::class, $context);
 
         $this->repository->save($attribute);
-        $this->dispatch(AttributeCreated::class, compact('attribute', 'context'));
+        $this->bus->dispatch($this->factory->create(AttributeCreated::class, compact('attribute', 'context')));
     }
 }
