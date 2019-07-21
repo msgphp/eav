@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Command\Handler;
 
 use MsgPhp\Domain\DomainMessageBus;
-use MsgPhp\Domain\Exception\EntityNotFoundException;
+use MsgPhp\Domain\Exception\EntityNotFound;
 use MsgPhp\Domain\Factory\DomainObjectFactory;
 use MsgPhp\Eav\Command\DeleteAttribute;
 use MsgPhp\Eav\Event\AttributeDeleted;
@@ -31,7 +31,7 @@ final class DeleteAttributeHandler
     {
         try {
             $attribute = $this->repository->find($command->attributeId);
-        } catch (EntityNotFoundException $e) {
+        } catch (EntityNotFound $e) {
             return;
         }
 
