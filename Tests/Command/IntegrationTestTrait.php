@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace MsgPhp\Eav\Tests\Command;
 
+use Doctrine\ORM\Events;
 use MsgPhp\Domain\Factory\GenericDomainObjectFactory;
 use MsgPhp\Domain\Infrastructure\Doctrine\DomainObjectFactory;
+use MsgPhp\Domain\Infrastructure\Doctrine\Event\ObjectMappingListener;
+use MsgPhp\Domain\Infrastructure\Doctrine\MappingConfig;
 use MsgPhp\Domain\Infrastructure\Doctrine\Test\EntityManagerTestTrait;
 use MsgPhp\Domain\Infrastructure\Messenger\Test\MessageBusTestTrait;
 use MsgPhp\Eav\Attribute;
@@ -13,6 +16,7 @@ use MsgPhp\Eav\AttributeId;
 use MsgPhp\Eav\AttributeValue;
 use MsgPhp\Eav\AttributeValueId;
 use MsgPhp\Eav\Command;
+use MsgPhp\Eav\Infrastructure\Doctrine\EavObjectMappings;
 use MsgPhp\Eav\Infrastructure\Doctrine\Repository;
 use MsgPhp\Eav\Infrastructure\Doctrine\Type;
 use MsgPhp\Eav\ScalarAttributeId;
@@ -23,6 +27,18 @@ trait IntegrationTestTrait
 {
     use EntityManagerTestTrait;
     use MessageBusTestTrait;
+
+    /**
+     * @beforeClass
+     */
+    public static function configureEm(): void
+    {
+        self::$em->getEventManager()->addEventListener(Events::loadClassMetadata, new ObjectMappingListener(
+            [new EavObjectMappings()],
+            new MappingConfig([], ['key_max_length' => 255]),
+            self::getClassMapping()
+        ));
+    }
 
     protected static function getMessageHandlers(): iterable
     {
@@ -55,14 +71,19 @@ trait IntegrationTestTrait
         yield Type\AttributeValueIdType::class => ScalarAttributeValueId::class;
     }
 
-    private static function createDomainFactory(): DomainObjectFactory
+    private static function getClassMapping(): array
     {
-        return new DomainObjectFactory(new GenericDomainObjectFactory([
+        return [
             AttributeId::class => ScalarAttributeId::class,
             AttributeValueId::class => ScalarAttributeValueId::class,
             Attribute::class => Entities\TestAttribute::class,
             AttributeValue::class => Entities\TestAttributeValue::class,
-        ]), self::$em);
+        ];
+    }
+
+    private static function createDomainFactory(): DomainObjectFactory
+    {
+        return new DomainObjectFactory(new GenericDomainObjectFactory(self::getClassMapping()), self::$em);
     }
 
     private static function createAttributeRepository(): Repository\AttributeRepository
