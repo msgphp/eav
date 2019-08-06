@@ -22,7 +22,7 @@ final class DeleteAttributeTest extends TestCase
         self::$bus->dispatch(new Command\DeleteAttribute($attribute->getId()));
 
         self::assertMessageIsDispatchedOnce(Event\AttributeDeleted::class);
-        self::assertCount(0, self::createAttributeRepository()->findAll());
+        self::assertCount(0, $repository->findAll());
     }
 
     public function testDeleteUnknownId(): void

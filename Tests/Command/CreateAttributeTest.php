@@ -15,7 +15,7 @@ final class CreateAttributeTest extends TestCase
 
     public function testCreate(): void
     {
-        self::$bus->dispatch(new Command\CreateAttribute([]));
+        self::$bus->dispatch(new Command\CreateAttribute(['foo' => 'bar']));
 
         self::assertMessageIsDispatchedOnce(Event\AttributeCreated::class);
 
@@ -23,8 +23,8 @@ final class CreateAttributeTest extends TestCase
         $event = self::$dispatchedMessages[Event\AttributeCreated::class][0];
         $repository = self::createAttributeRepository();
 
-        self::assertArrayHasKey('id', $event->context);
-        self::assertInstanceOf(AttributeId::class, $event->context['id']);
+        self::assertSame('bar', $event->context['foo'] ?? null);
+        self::assertInstanceOf(AttributeId::class, $event->context['id'] ?? null);
         self::assertTrue($event->context['id']->isEmpty());
         self::assertCount(1, $repository->findAll());
         self::assertSame($event->attribute, $repository->find($event->attribute->getId()));
@@ -42,8 +42,7 @@ final class CreateAttributeTest extends TestCase
         $event = self::$dispatchedMessages[Event\AttributeCreated::class][0];
         $repository = self::createAttributeRepository();
 
-        self::assertArrayHasKey('id', $event->context);
-        self::assertSame($id, $event->context['id']);
+        self::assertSame($id, $event->context['id'] ?? null);
         self::assertFalse($event->attribute->getId()->isEmpty());
         self::assertTrue($repository->exists($event->attribute->getId()));
     }

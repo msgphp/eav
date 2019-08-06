@@ -50,6 +50,16 @@ trait IntegrationTestTrait
         yield Command\DeleteAttribute::class => new Command\Handler\DeleteAttributeHandler($factory, $bus, $repository);
     }
 
+    protected static function getClassMapping(): array
+    {
+        return [
+            AttributeId::class => ScalarAttributeId::class,
+            AttributeValueId::class => ScalarAttributeValueId::class,
+            Attribute::class => Entities\TestAttribute::class,
+            AttributeValue::class => Entities\TestAttributeValue::class,
+        ];
+    }
+
     protected static function createSchema(): bool
     {
         return true;
@@ -61,7 +71,7 @@ trait IntegrationTestTrait
             'MsgPhp\\Eav\\Tests\\Fixtures\\Entities\\' => \dirname(__DIR__).'/Fixtures/Entities',
         ];
         yield 'xml' => [
-            'MsgPhp\\Eav\\' => self::createEntityDistMapping(\dirname(__DIR__, 2).'/Infrastructure/Doctrine/Resources/dist-mapping'),
+            'MsgPhp' => self::createEntityDistMapping(\dirname(__DIR__, 2).'/Infrastructure/Doctrine/Resources/dist-mapping'),
         ];
     }
 
@@ -69,16 +79,6 @@ trait IntegrationTestTrait
     {
         yield Type\AttributeIdType::class => ScalarAttributeId::class;
         yield Type\AttributeValueIdType::class => ScalarAttributeValueId::class;
-    }
-
-    private static function getClassMapping(): array
-    {
-        return [
-            AttributeId::class => ScalarAttributeId::class,
-            AttributeValueId::class => ScalarAttributeValueId::class,
-            Attribute::class => Entities\TestAttribute::class,
-            AttributeValue::class => Entities\TestAttributeValue::class,
-        ];
     }
 
     private static function createDomainFactory(): DomainObjectFactory
