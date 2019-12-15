@@ -9,6 +9,9 @@ use MsgPhp\Eav\Model\AttributeField;
 use MsgPhp\Eav\Tests\Fixtures\Entities\TestAttribute;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 final class AttributeFieldTest extends TestCase
 {
     public function testField(): void

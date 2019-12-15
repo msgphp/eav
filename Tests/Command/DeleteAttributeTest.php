@@ -10,6 +10,9 @@ use MsgPhp\Eav\Command;
 use MsgPhp\Eav\Event;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 final class DeleteAttributeTest extends TestCase
 {
     use IntegrationTestTrait;

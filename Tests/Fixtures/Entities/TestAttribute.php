@@ -21,7 +21,7 @@ class TestAttribute extends Attribute
      */
     private $id;
 
-    public function __construct(AttributeId $id = null)
+    public function __construct(?AttributeId $id = null)
     {
         $this->id = $id ?? new ScalarAttributeId();
     }

@@ -8,6 +8,9 @@ use MsgPhp\Domain\Infrastructure\Doctrine\MappingConfig;
 use MsgPhp\Eav\Infrastructure\Doctrine\EavObjectMappings;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 final class EavObjectMappingsTest extends TestCase
 {
     public function testMapping(): void

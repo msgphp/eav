@@ -9,6 +9,9 @@ use MsgPhp\Eav\Command;
 use MsgPhp\Eav\Event;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 final class CreateAttributeTest extends TestCase
 {
     use IntegrationTestTrait;

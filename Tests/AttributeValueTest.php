@@ -10,6 +10,9 @@ use MsgPhp\Eav\Tests\Fixtures\Entities\TestAttributeValue;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 final class AttributeValueTest extends TestCase
 {
     public function testCreate(): void

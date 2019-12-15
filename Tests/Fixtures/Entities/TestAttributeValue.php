@@ -25,7 +25,7 @@ class TestAttributeValue extends AttributeValue
     /**
      * @param mixed $value
      */
-    public function __construct(Attribute $attribute, $value, AttributeValueId $id = null)
+    public function __construct(Attribute $attribute, $value, ?AttributeValueId $id = null)
     {
         parent::__construct($attribute, $value);
 

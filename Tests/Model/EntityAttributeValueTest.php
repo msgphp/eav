@@ -10,6 +10,9 @@ use MsgPhp\Eav\Tests\Fixtures\Entities\TestAttribute;
 use MsgPhp\Eav\Tests\Fixtures\Entities\TestAttributeValue;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 final class EntityAttributeValueTest extends TestCase
 {
     public function testAttributeValue(): void
