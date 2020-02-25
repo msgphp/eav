@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "msgphp/domain": "^0.14"
+        "msgphp/domain": "^0.15"
     },
     "require-dev": {
         "doctrine/orm": "^2.6",
