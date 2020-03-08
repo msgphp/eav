@@ -21,7 +21,7 @@
     },
     "require-dev": {
         "doctrine/orm": "^2.6",
-        "symfony/messenger": "^4.3 || ^5.0"
+        "symfony/messenger": "^4.4 || ^5.0"
     },
     "config": {
         "preferred-install": {
