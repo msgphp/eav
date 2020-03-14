@@ -28,7 +28,7 @@ final class CreateAttributeTest extends TestCase
 
         self::assertSame('bar', $event->context['foo'] ?? null);
         self::assertInstanceOf(AttributeId::class, $event->context['id'] ?? null);
-        self::assertTrue($event->context['id']->isEmpty());
+        self::assertTrue($event->context['id']->isNil());
         self::assertCount(1, $repository->findAll());
         self::assertSame($event->attribute, $repository->find($event->attribute->getId()));
     }
@@ -46,7 +46,7 @@ final class CreateAttributeTest extends TestCase
         $repository = self::createAttributeRepository();
 
         self::assertSame($id, $event->context['id'] ?? null);
-        self::assertFalse($event->attribute->getId()->isEmpty());
+        self::assertFalse($event->attribute->getId()->isNil());
         self::assertTrue($repository->exists($event->attribute->getId()));
     }
 }
