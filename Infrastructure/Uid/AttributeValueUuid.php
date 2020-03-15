@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MsgPhp\Eav\Infrastructure\Uuid;
+namespace MsgPhp\Eav\Infrastructure\Uid;
 
-use MsgPhp\Domain\Infrastructure\Uuid\DomainIdTrait;
+use MsgPhp\Domain\Infrastructure\Uid\DomainIdTrait;
 use MsgPhp\Eav\AttributeValueId;
 
 /**
