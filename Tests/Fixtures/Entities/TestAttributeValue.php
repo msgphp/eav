@@ -15,10 +15,10 @@ use MsgPhp\Eav\ScalarAttributeValueId;
 class TestAttributeValue extends AttributeValue
 {
     /**
-     * @var AttributeValueId
+     * @var null|int
      * @Doctrine\ORM\Mapping\Id()
      * @Doctrine\ORM\Mapping\GeneratedValue()
-     * @Doctrine\ORM\Mapping\Column(type="msgphp_attribute_value_id")
+     * @Doctrine\ORM\Mapping\Column(type="integer")
      */
     private $id;
 
@@ -29,11 +29,11 @@ class TestAttributeValue extends AttributeValue
     {
         parent::__construct($attribute, $value);
 
-        $this->id = $id ?? new ScalarAttributeValueId();
+        $this->id = null === $id || $id->isNil() ? null : (int) $id->toString();
     }
 
     public function getId(): AttributeValueId
     {
-        return $this->id;
+        return new ScalarAttributeValueId(null === $this->id ? null : (string) $this->id);
     }
 }

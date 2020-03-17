@@ -18,7 +18,6 @@ use MsgPhp\Eav\AttributeValueId;
 use MsgPhp\Eav\Command;
 use MsgPhp\Eav\Infrastructure\Doctrine\EavObjectMappings;
 use MsgPhp\Eav\Infrastructure\Doctrine\Repository;
-use MsgPhp\Eav\Infrastructure\Doctrine\Type;
 use MsgPhp\Eav\ScalarAttributeId;
 use MsgPhp\Eav\ScalarAttributeValueId;
 use MsgPhp\Eav\Tests\Fixtures\Entities;
@@ -77,8 +76,7 @@ trait IntegrationTestTrait
 
     protected static function getEntityIdTypes(): iterable
     {
-        yield Type\AttributeIdType::class => ScalarAttributeId::class;
-        yield Type\AttributeValueIdType::class => ScalarAttributeValueId::class;
+        return [];
     }
 
     private static function createDomainFactory(): DomainObjectFactory

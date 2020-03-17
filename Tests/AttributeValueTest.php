@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MsgPhp\Eav\Tests;
 
 use MsgPhp\Eav\AttributeValue;
+use MsgPhp\Eav\ScalarAttributeId;
 use MsgPhp\Eav\Tests\Fixtures\Entities\TestAttribute;
 use MsgPhp\Eav\Tests\Fixtures\Entities\TestAttributeValue;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -17,12 +18,12 @@ final class AttributeValueTest extends TestCase
 {
     public function testCreate(): void
     {
-        $attribute = new TestAttribute();
+        $attribute = new TestAttribute(new ScalarAttributeId('123'));
         $attributeValue = new TestAttributeValue($attribute, 'value');
 
         self::assertSame('value', $attributeValue->getValue());
         self::assertSame($attribute, $attributeValue->getAttribute());
-        self::assertSame($attribute->getId(), $attributeValue->getAttributeId());
+        self::assertSame('123', $attributeValue->getAttributeId()->toString());
     }
 
     /**

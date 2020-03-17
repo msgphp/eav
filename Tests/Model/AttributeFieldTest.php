@@ -6,6 +6,7 @@ namespace MsgPhp\Eav\Tests\Model;
 
 use MsgPhp\Eav\Attribute;
 use MsgPhp\Eav\Model\AttributeField;
+use MsgPhp\Eav\ScalarAttributeId;
 use MsgPhp\Eav\Tests\Fixtures\Entities\TestAttribute;
 use PHPUnit\Framework\TestCase;
 
@@ -16,10 +17,10 @@ final class AttributeFieldTest extends TestCase
 {
     public function testField(): void
     {
-        $model = new TestAttributeFieldModel($attribute = new TestAttribute());
+        $model = new TestAttributeFieldModel($attribute = new TestAttribute(new ScalarAttributeId('123')));
 
         self::assertSame($attribute, $model->getAttribute());
-        self::assertSame($attribute->getId(), $model->getAttributeId());
+        self::assertSame('123', $model->getAttributeId()->toString());
     }
 }
 

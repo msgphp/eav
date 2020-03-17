@@ -14,20 +14,20 @@ use MsgPhp\Eav\ScalarAttributeId;
 class TestAttribute extends Attribute
 {
     /**
-     * @var AttributeId
+     * @var null|int
      * @Doctrine\ORM\Mapping\Id()
      * @Doctrine\ORM\Mapping\GeneratedValue()
-     * @Doctrine\ORM\Mapping\Column(type="msgphp_attribute_id")
+     * @Doctrine\ORM\Mapping\Column(type="integer")
      */
     private $id;
 
     public function __construct(?AttributeId $id = null)
     {
-        $this->id = $id ?? new ScalarAttributeId();
+        $this->id = null === $id || $id->isNil() ? null : (int) $id->toString();
     }
 
     public function getId(): AttributeId
     {
-        return $this->id;
+        return new ScalarAttributeId(null === $this->id ? null : (string) $this->id);
     }
 }
